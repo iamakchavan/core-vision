@@ -109,113 +109,103 @@ const severityConfig = {
 const RealTimeAlerts = () => {
   return (
     <Card className="card-maritime">
-      <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-lg">
-            <AlertTriangle className="h-5 w-5 text-primary" />
-            Risk Alerts & Reports
-          </div>
+      <CardHeader className="pb-3">
+        <CardTitle className="flex items-center justify-between text-base">
           <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="text-xs">
+            <AlertTriangle className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">Risk Alerts & Reports</span>
+            <span className="sm:hidden">Alerts</span>
+          </div>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
               {activeAlerts.filter(a => a.isReal).length} Live
             </Badge>
-            <Badge variant="outline" className="text-xs">
+            <Badge variant="outline" className="text-xs px-1.5 py-0.5">
               {activeAlerts.filter(a => !a.isReal).length} Simulated
             </Badge>
           </div>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {activeAlerts.map((alert, index) => {
+      <CardContent className="space-y-3 px-4 pb-4">
+        {activeAlerts.slice(0, 2).map((alert, index) => {
           const config = severityConfig[alert.severity];
           
           return (
             <div
               key={alert.id}
-              className={`border rounded-lg p-4 transition-all hover:shadow-md cursor-pointer ${config.bgColor}`}
+              className={`border rounded-lg p-3 transition-all hover:shadow-md cursor-pointer ${config.bgColor}`}
             >
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-start gap-3">
-                  <div className={`w-3 h-3 rounded-full mt-1 ${config.color} ${alert.isReal ? 'animate-pulse' : ''}`} />
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-semibold text-sm">{alert.title}</h4>
-                      <Badge variant={config.variant} className="text-xs">
+              <div className="flex items-start justify-between mb-2">
+                <div className="flex items-start gap-2 flex-1">
+                  <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${config.color} ${alert.isReal ? 'animate-pulse' : ''}`} />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1 mb-1 flex-wrap">
+                      <h4 className="font-semibold text-sm truncate">{alert.title}</h4>
+                      <Badge variant={config.variant} className="text-xs px-1.5 py-0.5">
                         {alert.severity.toUpperCase()}
                       </Badge>
-                      {alert.isReal ? (
-                        <div className="flex items-center gap-1">
-                          <div className="status-indicator status-live" />
-                          <span className="text-xs text-success font-medium">LIVE</span>
-                        </div>
-                      ) : (
-                        <div className="flex items-center gap-1">
-                          <div className="status-indicator status-simulated" />
-                          <span className="text-xs text-warning font-medium">SIM</span>
-                        </div>
-                      )}
                     </div>
-                    <p className="text-xs text-muted-foreground mb-2">{alert.description}</p>
+                    <p className="text-xs text-muted-foreground mb-2 line-clamp-2">{alert.description}</p>
                     
-                    <div className="grid grid-cols-2 gap-3 text-xs">
+                    <div className="flex items-center justify-between text-xs">
                       <div className="flex items-center gap-1">
-                        <MapPin className="h-3 w-3 text-muted-foreground" />
-                        <span>{alert.location}</span>
+                        <MapPin className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                        <span className="truncate">{alert.location}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Clock className="h-3 w-3 text-muted-foreground" />
-                        <span>{alert.timeAgo}</span>
+                        <Clock className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                        <span>{alert.timeAgo.replace(' ago', '')}</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="text-right">
-                  <div className="flex items-center gap-1 mb-1">
+                <div className="text-right flex-shrink-0 ml-2">
+                  <div className="flex items-center gap-1">
                     <span className="text-lg font-bold text-foreground">{alert.riskScore}</span>
                     <span className="text-xs text-muted-foreground">/10</span>
                   </div>
                   <div className="text-xs text-muted-foreground">
                     {alert.affectedShipments} shipments
                   </div>
+                  {alert.isReal ? (
+                    <div className="flex items-center gap-1 mt-1">
+                      <div className="status-indicator status-live w-1.5 h-1.5" />
+                      <span className="text-xs text-success font-medium">LIVE</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1 mt-1">
+                      <div className="status-indicator status-simulated w-1.5 h-1.5" />
+                      <span className="text-xs text-warning font-medium">SIM</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
-              {/* Expandable Details */}
-              <div className="border-t border-border/50 pt-3 mt-3 space-y-2">
-                <div>
-                  <div className="text-xs font-medium text-muted-foreground mb-1">Action Plan:</div>
-                  <div className="text-xs">{alert.actionPlan}</div>
+              {/* Action Buttons */}
+              <div className="flex items-center justify-between pt-2 border-t border-border/50">
+                <div className="flex items-center gap-1">
+                  <Button variant="outline" size="sm" className="h-6 text-xs px-2">
+                    <Eye className="h-3 w-3 mr-1" />
+                    View Details
+                  </Button>
+                  <Button variant="outline" size="sm" className="h-6 text-xs px-2">
+                    <Zap className="h-3 w-3 mr-1" />
+                    Auto-Resolve
+                  </Button>
                 </div>
-                <div>
-                  <div className="text-xs font-medium text-muted-foreground mb-1">Escalation:</div>
-                  <div className="text-xs">{alert.escalation}</div>
-                </div>
-                
-                <div className="flex items-center justify-between pt-2">
-                  <div className="flex items-center gap-2">
-                    <Button variant="outline" size="sm" className="h-7 text-xs">
-                      <Eye className="h-3 w-3 mr-1" />
-                      View Details
-                    </Button>
-                    <Button variant="outline" size="sm" className="h-7 text-xs">
-                      <Zap className="h-3 w-3 mr-1" />
-                      Auto-Resolve
-                    </Button>
-                  </div>
-                  <Badge variant="secondary" className="text-xs">
-                    {alert.type}
-                  </Badge>
-                </div>
+                <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
+                  {alert.type}
+                </Badge>
               </div>
             </div>
           );
         })}
         
-        <div className="text-center pt-4">
-          <Button variant="outline" size="sm" className="gap-2">
-            View All Alerts
-            <ChevronRight className="h-4 w-4" />
+        <div className="text-center pt-2">
+          <Button variant="outline" size="sm" className="gap-2 text-xs">
+            View All ({activeAlerts.length}) Alerts
+            <ChevronRight className="h-3 w-3" />
           </Button>
         </div>
       </CardContent>

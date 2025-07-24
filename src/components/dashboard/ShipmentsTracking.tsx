@@ -16,7 +16,8 @@ import {
   Navigation,
   Filter,
   Search,
-  MoreVertical
+  MoreVertical,
+  ChevronRight
 } from "lucide-react";
 
 const shipments = [
@@ -159,42 +160,43 @@ const ShipmentsTracking = () => {
 
   return (
     <Card className="card-maritime">
-      <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-lg">
-            <Navigation className="h-5 w-5 text-primary" />
-            Shipment Tracking
-          </div>
+      <CardHeader className="pb-3">
+        <CardTitle className="flex items-center justify-between text-base">
           <div className="flex items-center gap-2">
-            <Badge variant={realTimeUpdates ? "default" : "secondary"} className="text-xs">
-              {realTimeUpdates ? "Live Updates" : "Static"}
+            <Navigation className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">Shipment Tracking</span>
+            <span className="sm:hidden">Shipments</span>
+          </div>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Badge variant={realTimeUpdates ? "default" : "secondary"} className="text-xs px-1.5 py-0.5">
+              {realTimeUpdates ? "Live" : "Static"}
             </Badge>
             <Button
               variant="outline"
               size="sm"
               onClick={() => setRealTimeUpdates(!realTimeUpdates)}
-              className="text-xs"
+              className="text-xs h-6 px-2"
             >
               {realTimeUpdates ? "Pause" : "Resume"}
             </Button>
           </div>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {/* Filters */}
-        <div className="flex items-center gap-3">
+      <CardContent className="space-y-3 px-4 pb-4">
+        {/* Filters - Mobile Optimized */}
+        <div className="flex items-center gap-2">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-3 w-3 text-muted-foreground" />
             <Input
-              placeholder="Search shipments, locations..."
+              placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
+              className="pl-7 h-8 text-xs"
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-40">
-              <SelectValue placeholder="Status" />
+            <SelectTrigger className="w-24 h-8 text-xs">
+              <SelectValue placeholder="All" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Status</SelectItem>
@@ -204,40 +206,40 @@ const ShipmentsTracking = () => {
               <SelectItem value="loading">Loading</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" size="sm">
-            <Filter className="h-4 w-4" />
+          <Button variant="outline" size="sm" className="h-8 w-8 p-0">
+            <Filter className="h-3 w-3" />
           </Button>
         </div>
 
-        {/* Stats Row */}
-        <div className="grid grid-cols-4 gap-4">
-          <div className="text-center p-3 bg-muted/30 rounded-lg">
-            <div className="text-lg font-bold text-foreground">{shipments.length}</div>
-            <div className="text-xs text-muted-foreground">Total Shipments</div>
+        {/* Stats Row - Mobile Optimized */}
+        <div className="grid grid-cols-4 gap-2">
+          <div className="text-center p-2 bg-muted/30 rounded-lg">
+            <div className="text-sm sm:text-lg font-bold text-foreground">{shipments.length}</div>
+            <div className="text-xs text-muted-foreground">Total</div>
           </div>
-          <div className="text-center p-3 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg">
-            <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
+          <div className="text-center p-2 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg">
+            <div className="text-sm sm:text-lg font-bold text-blue-600 dark:text-blue-400">
               {shipments.filter(s => s.status === 'in-transit').length}
             </div>
             <div className="text-xs text-muted-foreground">In Transit</div>
           </div>
-          <div className="text-center p-3 bg-red-500/10 dark:bg-red-500/20 rounded-lg">
-            <div className="text-lg font-bold text-red-600 dark:text-red-400">
+          <div className="text-center p-2 bg-red-500/10 dark:bg-red-500/20 rounded-lg">
+            <div className="text-sm sm:text-lg font-bold text-red-600 dark:text-red-400">
               {shipments.filter(s => s.status === 'delayed').length}
             </div>
             <div className="text-xs text-muted-foreground">Delayed</div>
           </div>
-          <div className="text-center p-3 bg-green-500/10 dark:bg-green-500/20 rounded-lg">
-            <div className="text-lg font-bold text-green-600 dark:text-green-400">
+          <div className="text-center p-2 bg-green-500/10 dark:bg-green-500/20 rounded-lg">
+            <div className="text-sm sm:text-lg font-bold text-green-600 dark:text-green-400">
               {shipments.filter(s => s.status === 'arrived').length}
             </div>
             <div className="text-xs text-muted-foreground">Delivered</div>
           </div>
         </div>
 
-        {/* Shipments List */}
-        <div className="space-y-3 max-h-96 overflow-y-auto">
-          {filteredShipments.map((shipment) => {
+        {/* Shipments List - Mobile Optimized */}
+        <div className="space-y-2 max-h-80 overflow-y-auto">
+          {filteredShipments.slice(0, 3).map((shipment) => {
             const statusConf = statusConfig[shipment.status];
             const priorityConf = priorityConfig[shipment.priority];
             const riskConf = riskConfig[shipment.riskLevel];
@@ -246,49 +248,49 @@ const ShipmentsTracking = () => {
             return (
               <div
                 key={shipment.id}
-                className={`border rounded-lg p-4 hover:shadow-md transition-all cursor-pointer ${priorityConf.bg}`}
+                className={`border rounded-lg p-3 hover:shadow-md transition-all cursor-pointer ${priorityConf.bg}`}
                 onClick={() => setSelectedShipment(shipment)}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-start gap-3">
-                    <div className="flex flex-col items-center">
-                      <StatusIcon className="h-5 w-5 text-muted-foreground" />
-                      <div className={`w-2 h-2 rounded-full mt-1 ${statusConf.color} ${realTimeUpdates ? 'animate-pulse' : ''}`} />
+                <div className="flex items-start justify-between mb-2">
+                  <div className="flex items-start gap-2 flex-1 min-w-0">
+                    <div className="flex flex-col items-center flex-shrink-0">
+                      <StatusIcon className="h-4 w-4 text-muted-foreground" />
+                      <div className={`w-1.5 h-1.5 rounded-full mt-1 ${statusConf.color} ${realTimeUpdates ? 'animate-pulse' : ''}`} />
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold text-sm">{shipment.id}</h4>
-                        <Badge variant={statusConf.variant} className="text-xs">
-                          {shipment.status.replace('-', ' ').toUpperCase()}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-1 mb-1 flex-wrap">
+                        <h4 className="font-semibold text-sm truncate">{shipment.id}</h4>
+                        <Badge variant={statusConf.variant} className="text-xs px-1.5 py-0.5">
+                          {shipment.status === 'in-transit' ? 'IN TRANSIT' : 
+                           shipment.status === 'delayed' ? 'DELAYED' : 
+                           shipment.status.replace('-', ' ').toUpperCase()}
                         </Badge>
-                        <Badge variant="outline" className={`text-xs ${priorityConf.color}`}>
-                          {shipment.priority.toUpperCase()}
+                        <Badge variant="outline" className={`text-xs px-1.5 py-0.5 ${priorityConf.color}`}>
+                          {shipment.priority === 'critical' ? 'HIGH' : 
+                           shipment.priority === 'high' ? 'MED' : 
+                           shipment.priority.substring(0, 3).toUpperCase()}
                         </Badge>
                       </div>
                       
-                      <div className="grid grid-cols-2 gap-2 text-xs mb-2">
+                      <div className="text-xs mb-2 space-y-1">
                         <div className="flex items-center gap-1">
-                          <MapPin className="h-3 w-3 text-muted-foreground" />
-                          <span>{shipment.origin}</span>
+                          <span className="text-muted-foreground">From:</span>
+                          <span className="truncate">{shipment.origin}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <MapPin className="h-3 w-3 text-muted-foreground" />
-                          <span>{shipment.destination}</span>
+                          <span className="text-muted-foreground">To:</span>
+                          <span className="truncate">{shipment.destination}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Package className="h-3 w-3 text-muted-foreground" />
-                          <span>{shipment.containers} containers</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1">
+                            <Package className="h-3 w-3 text-muted-foreground" />
+                            <span>{shipment.containers} containers</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-3 w-3 text-muted-foreground" />
+                            <span>ETA: {shipment.eta}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-3 w-3 text-muted-foreground" />
-                          <span>ETA: {shipment.eta}</span>
-                        </div>
-                      </div>
-
-                      <div className="text-xs text-muted-foreground mb-2">
-                        <strong>Current:</strong> {shipment.currentLocation} • 
-                        <strong className="ml-1">Vessel:</strong> {shipment.vessel} • 
-                        <strong className="ml-1">Cargo:</strong> {shipment.cargo}
                       </div>
 
                       {shipment.status === 'in-transit' && (
@@ -297,34 +299,40 @@ const ShipmentsTracking = () => {
                             <span>Progress</span>
                             <span>{shipment.progress}%</span>
                           </div>
-                          <Progress value={shipment.progress} className="h-2" />
+                          <Progress value={shipment.progress} className="h-1.5" />
                         </div>
                       )}
 
                       {shipment.estimatedDelay > 0 && (
-                        <div className="mt-2 p-2 bg-red-500/10 dark:bg-red-500/20 rounded text-xs text-red-600 dark:text-red-400">
-                          ⚠️ Estimated delay: {shipment.estimatedDelay} hours
+                        <div className="mt-1 p-1.5 bg-red-500/10 dark:bg-red-500/20 rounded text-xs text-red-600 dark:text-red-400">
+                          ⚠️ Delay: {shipment.estimatedDelay}h
                         </div>
                       )}
                     </div>
                   </div>
                   
-                  <div className="text-right">
+                  <div className="text-right flex-shrink-0 ml-2">
                     <div className={`text-xs font-medium ${riskConf.color} mb-1`}>
-                      Risk: {shipment.riskLevel.toUpperCase()}
+                      {shipment.riskLevel.toUpperCase()}
                     </div>
                     <div className="text-xs text-muted-foreground">
-                      Updated {shipment.lastUpdate}
+                      {shipment.lastUpdate.replace(' ago', '')}
                     </div>
-                    <Button variant="ghost" size="sm" className="mt-1 h-6 w-6 p-0">
-                      <MoreVertical className="h-3 w-3" />
-                    </Button>
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
+        
+        {filteredShipments.length > 3 && (
+          <div className="text-center pt-2">
+            <Button variant="outline" size="sm" className="gap-2 text-xs">
+              View All ({filteredShipments.length}) Shipments
+              <ChevronRight className="h-3 w-3" />
+            </Button>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
