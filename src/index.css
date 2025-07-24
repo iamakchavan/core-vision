@@ -152,7 +152,7 @@ All colors MUST be HSL.
 @layer components {
   /* Maritime dashboard components */
   .dashboard-grid {
-    @apply grid grid-cols-1 lg:grid-cols-12 gap-6 p-6;
+    @apply grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6;
   }
   
   .status-indicator {
