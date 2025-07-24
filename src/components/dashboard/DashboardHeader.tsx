@@ -11,6 +11,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const DashboardHeader = () => {
   return (
@@ -37,6 +38,7 @@ const DashboardHeader = () => {
           </div>
           
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Button variant="outline" size="sm" className="gap-2">
               <BarChart3 className="h-4 w-4" />
               AI Demo
