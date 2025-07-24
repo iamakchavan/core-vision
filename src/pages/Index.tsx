@@ -12,128 +12,130 @@ import ShipmentsTracking from "@/components/dashboard/ShipmentsTracking";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/10">
       <DashboardHeader />
       
-      {/* Hero Status Banner */}
-      <div className="border-b border-border/20 bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-2">Maritime Operations Center</h2>
-              <p className="text-muted-foreground">Real-time monitoring and intelligence for global supply chain operations</p>
-            </div>
-            <div className="flex items-center gap-6">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">12,847</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wide">Active Shipments</div>
-              </div>
-              <div className="w-px h-12 bg-border"></div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-success">99.2%</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wide">System Uptime</div>
-              </div>
-              <div className="w-px h-12 bg-border"></div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-warning">24</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wide">Active Alerts</div>
-              </div>
-            </div>
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5"></div>
+        <div className="container mx-auto px-8 pt-8 pb-4 relative">
+          <div className="text-center mb-8">
+            <h1 className="display-lg text-foreground mb-3">
+              Maritime Operations Center
+            </h1>
+            <p className="body-lg text-muted-foreground max-w-2xl mx-auto">
+              Real-time monitoring and intelligent analytics for global supply chain operations
+            </p>
           </div>
         </div>
       </div>
-
-      {/* Main Content Area */}
-      <div className="container mx-auto px-6 py-8">
+      
+      <div className="container mx-auto px-8 pb-8">
+        {/* Executive Summary Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="metric-card">
+            <div className="metric-value text-primary">247</div>
+            <div className="metric-label">Active Shipments</div>
+            <div className="metric-change text-success">
+              +12% vs last week
+            </div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-value text-accent">98.7%</div>
+            <div className="metric-label">On-Time Delivery</div>
+            <div className="metric-change text-success">
+              +2.3% improvement
+            </div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-value text-warning">€2.4M</div>
+            <div className="metric-label">Cost Savings</div>
+            <div className="metric-change text-success">
+              This quarter
+            </div>
+          </div>
+          <div className="metric-card">
+            <div className="metric-value text-destructive">3</div>
+            <div className="metric-label">Critical Alerts</div>
+            <div className="metric-change text-destructive">
+              Requires attention
+            </div>
+          </div>
+        </div>
         
-        {/* Primary Operations Grid */}
-        <section className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-foreground">Operations Overview</h3>
-            <div className="text-sm text-muted-foreground">Last updated: 2 minutes ago</div>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Primary Panel - Port Status */}
-            <div className="lg:col-span-8">
-              <div id="port-status" className="h-full">
-                <GlobalPortStatus />
-              </div>
+        {/* Main Dashboard Grid */}
+        <div className="dashboard-grid mb-8">
+          {/* Left Column - AI Operations */}
+          <div className="lg:col-span-3 space-y-8">
+            <div id="ai-agents" className="animate-fade-in">
+              <AIAgentsPanel />
             </div>
-            
-            {/* Secondary Panels */}
-            <div className="lg:col-span-4 space-y-6">
-              <div id="ai-agents">
-                <AIAgentsPanel />
-              </div>
-              <ToolCallsPanel />
-            </div>
-          </div>
-        </section>
-
-        {/* Workflow & Analytics Grid */}
-        <section className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-foreground">Workflow & Performance</h3>
-            <button className="text-sm text-primary hover:text-primary/80 transition-colors">View All →</button>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <WorkflowProgress />
-            <PerformanceMetrics />
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div id="ai-network" className="lg:col-span-1">
+            <div id="ai-network" className="animate-fade-in">
               <AgentNetwork />
             </div>
-            <div className="lg:col-span-2">
-              <div id="analytics-section">
-                <AnalyticsDashboard />
-              </div>
-            </div>
           </div>
-        </section>
-
-        {/* Monitoring & Intelligence Grid */}
-        <section className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-foreground">Real-time Intelligence</h3>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-                Live monitoring active
-              </div>
+          
+          {/* Center Column - Core Operations */}
+          <div className="lg:col-span-6 space-y-8">
+            <div id="port-status" className="animate-slide-up">
+              <GlobalPortStatus />
+            </div>
+            <div className="animate-slide-up">
+              <WorkflowProgress />
             </div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div id="alerts-section">
+          {/* Right Column - Analytics & Controls */}
+          <div className="lg:col-span-3 space-y-8">
+            <div className="animate-scale-in">
+              <ToolCallsPanel />
+            </div>
+            <div className="animate-scale-in">
+              <PerformanceMetrics />
+            </div>
+          </div>
+        </div>
+
+        {/* Analytics Intelligence Section */}
+        <div className="dashboard-section mb-8">
+          <div className="section-header">
+            <h2 className="section-title">
+              Business Intelligence Dashboard
+            </h2>
+          </div>
+          <div id="analytics-section" className="animate-fade-in">
+            <AnalyticsDashboard />
+          </div>
+        </div>
+
+        {/* Risk Management & Network Operations */}
+        <div className="dashboard-section mb-8">
+          <div className="section-header">
+            <h2 className="section-title">
+              Risk Management & Network Operations
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div id="alerts-section" className="animate-fade-in">
               <RealTimeAlerts />
             </div>
-            <AINetworkVisualization />
-          </div>
-        </section>
-
-        {/* Shipments Tracking */}
-        <section>
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-foreground">Global Shipment Tracking</h3>
-            <div className="flex items-center gap-3">
-              <select className="bg-card border border-border rounded-md px-3 py-1 text-sm">
-                <option>All Regions</option>
-                <option>Asia Pacific</option>
-                <option>Europe</option>
-                <option>Americas</option>
-              </select>
-              <button className="text-sm text-primary hover:text-primary/80 transition-colors">Export Data</button>
+            <div className="animate-fade-in">
+              <AINetworkVisualization />
             </div>
           </div>
-          
-          <div id="shipments-section">
+        </div>
+
+        {/* Shipment Operations */}
+        <div className="dashboard-section">
+          <div className="section-header">
+            <h2 className="section-title">
+              Global Shipment Operations
+            </h2>
+          </div>
+          <div id="shipments-section" className="animate-fade-in">
             <ShipmentsTracking />
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );

@@ -2,139 +2,155 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Supply Chain Intelligence Design System
-Maritime-inspired color palette with Space Grotesk typography
-All colors MUST be HSL.
+/* Professional Maritime Operations Dashboard
+Enterprise-grade design system with sophisticated typography and color palette
 */
 
 @layer base {
   :root {
-    /* Base colors - Clean white with maritime blue accents */
-    --background: 0 0% 100%;
-    --foreground: 213 27% 19%;
+    /* Base colors - Clean whites with sophisticated navy undertones */
+    --background: 0 0% 99%;
+    --foreground: 220 39% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 213 27% 19%;
+    --card-foreground: 220 39% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 213 27% 19%;
+    --popover-foreground: 220 39% 11%;
 
-    /* Primary - Maritime blue theme */
-    --primary: 217 91% 60%;
+    /* Primary - Professional maritime navy */
+    --primary: 220 100% 25%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 217 91% 70%;
+    --primary-light: 220 60% 40%;
+    --primary-dark: 220 100% 15%;
 
-    /* Secondary - Soft blue-gray */
-    --secondary: 214 32% 91%;
-    --secondary-foreground: 213 27% 19%;
+    /* Secondary - Sophisticated steel blue */
+    --secondary: 215 25% 95%;
+    --secondary-foreground: 220 39% 11%;
 
-    /* Muted - Light blue-gray tones */
-    --muted: 214 32% 91%;
-    --muted-foreground: 215 16% 47%;
+    /* Muted - Professional grays */
+    --muted: 215 16% 94%;
+    --muted-foreground: 215 13% 40%;
 
-    /* Accent - Cyan highlights */
-    --accent: 191 91% 55%;
+    /* Accent - Ocean teal for highlights */
+    --accent: 185 84% 39%;
     --accent-foreground: 0 0% 100%;
+    --accent-light: 185 60% 50%;
 
-    /* Status colors */
-    --success: 142 76% 36%;
+    /* Professional status colors */
+    --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
-    --warning: 38 92% 50%;
+    --success-light: 142 51% 60%;
+    
+    --warning: 35 91% 62%;
     --warning-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
+    --warning-light: 35 71% 75%;
+    
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
+    --destructive-light: 0 52% 65%;
 
-    /* UI elements */
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 217 91% 60%;
+    /* UI refinements */
+    --border: 215 20% 90%;
+    --input: 215 20% 95%;
+    --ring: 220 100% 25%;
 
-    --radius: 0.5rem;
+    --radius: 8px;
 
-    /* Gradients for maritime aesthetic */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    /* Professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+    --gradient-surface: linear-gradient(145deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)), hsl(var(--accent)));
 
-    /* Shadows for depth */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.15);
-    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.2);
+    /* Enterprise shadows */
+    --shadow-sm: 0 2px 4px -1px hsl(220 39% 11% / 0.06), 0 1px 2px -1px hsl(220 39% 11% / 0.06);
+    --shadow-md: 0 4px 6px -2px hsl(220 39% 11% / 0.08), 0 2px 4px -2px hsl(220 39% 11% / 0.06);
+    --shadow-lg: 0 8px 25px -5px hsl(220 39% 11% / 0.1), 0 4px 6px -2px hsl(220 39% 11% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(220 39% 11% / 0.1), 0 10px 10px -5px hsl(220 39% 11% / 0.04);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.12);
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar variables */
+    --sidebar-background: 220 39% 7%;
+    --sidebar-foreground: 215 25% 95%;
+    --sidebar-primary: 220 100% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 39% 11%;
+    --sidebar-accent-foreground: 215 25% 95%;
+    --sidebar-border: 220 25% 15%;
+    --sidebar-ring: 220 100% 25%;
   }
 
   .dark {
-    /* Dark mode - Deep ocean theme */
-    --background: 213 40% 8%;
-    --foreground: 210 40% 98%;
+    /* Dark mode - Deep ocean professional theme */
+    --background: 220 39% 4%;
+    --foreground: 215 25% 95%;
 
-    --card: 213 35% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 35% 6%;
+    --card-foreground: 215 25% 95%;
 
-    --popover: 213 35% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 35% 6%;
+    --popover-foreground: 215 25% 95%;
 
-    /* Primary - Bright blue for dark mode */
-    --primary: 217 91% 65%;
-    --primary-foreground: 213 40% 8%;
-    --primary-glow: 217 91% 75%;
+    /* Enhanced primary for dark mode */
+    --primary: 220 91% 65%;
+    --primary-foreground: 220 39% 4%;
+    --primary-light: 220 71% 75%;
+    --primary-dark: 220 91% 45%;
 
-    /* Secondary - Dark blue-gray */
-    --secondary: 213 30% 15%;
-    --secondary-foreground: 210 40% 98%;
+    /* Dark secondary */
+    --secondary: 220 25% 8%;
+    --secondary-foreground: 215 25% 95%;
 
-    /* Muted - Subtle blue-grays */
-    --muted: 213 30% 15%;
-    --muted-foreground: 215 20% 65%;
+    /* Dark muted */
+    --muted: 220 25% 8%;
+    --muted-foreground: 215 15% 65%;
 
-    /* Accent - Bright cyan for highlights */
-    --accent: 191 91% 60%;
-    --accent-foreground: 213 40% 8%;
+    /* Enhanced accent for dark */
+    --accent: 185 84% 55%;
+    --accent-foreground: 220 39% 4%;
+    --accent-light: 185 64% 70%;
 
-    /* Status colors for dark mode */
-    --success: 142 76% 45%;
-    --success-foreground: 213 40% 8%;
-    --warning: 38 92% 55%;
-    --warning-foreground: 213 40% 8%;
-    --destructive: 0 84% 65%;
-    --destructive-foreground: 210 40% 98%;
+    /* Dark status colors */
+    --success: 142 71% 55%;
+    --success-foreground: 220 39% 4%;
+    --success-light: 142 51% 70%;
+    
+    --warning: 35 91% 72%;
+    --warning-foreground: 220 39% 4%;
+    --warning-light: 35 71% 85%;
+    
+    --destructive: 0 72% 61%;
+    --destructive-foreground: 220 39% 4%;
+    --destructive-light: 0 52% 75%;
 
-    /* UI elements */
-    --border: 213 30% 18%;
-    --input: 213 30% 15%;
-    --ring: 217 91% 65%;
+    /* Dark UI elements */
+    --border: 220 25% 12%;
+    --input: 220 25% 8%;
+    --ring: 220 91% 65%;
 
-    /* Enhanced gradients for dark mode */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    /* Enhanced dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+    --gradient-surface: linear-gradient(145deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)), hsl(var(--accent)));
 
-    /* Enhanced shadows for dark mode */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
-    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    /* Enhanced dark shadows */
+    --shadow-sm: 0 2px 4px -1px hsl(220 39% 0% / 0.3), 0 1px 2px -1px hsl(220 39% 0% / 0.3);
+    --shadow-md: 0 4px 6px -2px hsl(220 39% 0% / 0.4), 0 2px 4px -2px hsl(220 39% 0% / 0.3);
+    --shadow-lg: 0 8px 25px -5px hsl(220 39% 0% / 0.5), 0 4px 6px -2px hsl(220 39% 0% / 0.25);
+    --shadow-xl: 0 20px 25px -5px hsl(220 39% 0% / 0.5), 0 10px 10px -5px hsl(220 39% 0% / 0.2);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
 
-    --sidebar-background: 213 35% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 217 91% 65%;
-    --sidebar-primary-foreground: 213 40% 8%;
-    --sidebar-accent: 213 30% 12%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 213 30% 15%;
-    --sidebar-ring: 217 91% 65%;
+    /* Dark sidebar */
+    --sidebar-background: 220 39% 3%;
+    --sidebar-foreground: 215 25% 95%;
+    --sidebar-primary: 220 91% 65%;
+    --sidebar-primary-foreground: 220 39% 4%;
+    --sidebar-accent: 220 35% 8%;
+    --sidebar-accent-foreground: 215 25% 95%;
+    --sidebar-border: 220 25% 10%;
+    --sidebar-ring: 220 91% 65%;
   }
 }
 
@@ -144,114 +160,161 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 @layer components {
-  /* Enterprise Dashboard Components */
+  /* Professional dashboard grid system */
   .dashboard-grid {
-    @apply grid grid-cols-1 lg:grid-cols-12 gap-6;
+    @apply grid grid-cols-1 lg:grid-cols-12 gap-8 p-8;
   }
   
-  /* Status Indicators */
+  .dashboard-section {
+    @apply space-y-8;
+  }
+  
+  /* Status indicators with professional styling */
   .status-indicator {
-    @apply w-3 h-3 rounded-full animate-pulse;
+    @apply w-2.5 h-2.5 rounded-full;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
   
   .status-live {
-    @apply bg-success shadow-[0_0_10px_hsl(var(--success)/0.5)];
+    @apply bg-success;
+    box-shadow: 0 0 12px hsl(var(--success) / 0.4), 0 0 4px hsl(var(--success) / 0.6);
   }
   
   .status-simulated {
-    @apply bg-warning shadow-[0_0_10px_hsl(var(--warning)/0.5)];
+    @apply bg-warning;
+    box-shadow: 0 0 12px hsl(var(--warning) / 0.4), 0 0 4px hsl(var(--warning) / 0.6);
   }
   
-  /* Card Components */
+  /* Professional card styling */
   .card-maritime {
-    @apply bg-card border border-border rounded-xl shadow-sm hover:shadow-lg transition-all duration-300;
-    backdrop-filter: blur(10px);
+    @apply bg-card border border-border rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
+    background: linear-gradient(145deg, hsl(var(--card)), hsl(var(--card) / 0.8));
   }
   
-  /* Section Styling */
-  section {
-    @apply relative;
+  .card-premium {
+    @apply card-maritime;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid hsl(var(--border) / 0.8);
   }
   
-  section::before {
-    content: '';
-    @apply absolute -top-4 left-0 w-12 h-px bg-gradient-to-r from-primary to-transparent opacity-60;
+  .card-hero {
+    @apply card-maritime;
+    background: var(--gradient-hero);
+    @apply text-white;
+    box-shadow: var(--shadow-xl);
+    border: none;
   }
   
-  /* Professional Typography */
+  /* Professional section headers */
+  .section-header {
+    @apply flex items-center justify-between mb-6 pb-4 border-b border-border/50;
+  }
+  
   .section-title {
-    @apply text-lg font-semibold text-foreground tracking-tight;
+    @apply text-xl font-semibold text-foreground flex items-center gap-3;
   }
   
-  .section-subtitle {
-    @apply text-sm text-muted-foreground;
+  /* Typography hierarchy */
+  .display-xl { @apply text-4xl font-bold tracking-tight; }
+  .display-lg { @apply text-3xl font-bold tracking-tight; }
+  .display-md { @apply text-2xl font-semibold tracking-tight; }
+  .display-sm { @apply text-xl font-semibold tracking-tight; }
+  
+  .body-lg { @apply text-lg leading-7; }
+  .body-md { @apply text-base leading-6; }
+  .body-sm { @apply text-sm leading-5; }
+  .body-xs { @apply text-xs leading-4; }
+  
+  .caption { @apply text-xs text-muted-foreground font-medium; }
+  .overline { @apply text-xs text-muted-foreground font-semibold uppercase tracking-wide; }
+  
+  /* Interactive elements */
+  .interactive-element {
+    @apply transition-all duration-200 ease-out;
+  }
+  
+  .hover-lift {
+    @apply interactive-element hover:translate-y-[-2px] hover:shadow-lg;
+  }
+  
+  .hover-scale {
+    @apply interactive-element hover:scale-[1.02];
+  }
+  
+  /* Professional badges and pills */
+  .badge-premium {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium;
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+  
+  .badge-success {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium;
+    @apply bg-success/10 text-success border border-success/20;
+  }
+  
+  .badge-warning {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium;
+    @apply bg-warning/10 text-warning border border-warning/20;
+  }
+  
+  .badge-danger {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium;
+    @apply bg-destructive/10 text-destructive border border-destructive/20;
+  }
+  
+  /* Glass morphism effects */
+  .glass-card {
+    @apply backdrop-blur-sm bg-card/80 border border-border/50;
+    backdrop-filter: blur(12px);
+  }
+  
+  /* Professional metrics display */
+  .metric-card {
+    @apply card-premium p-6 text-center space-y-2;
   }
   
   .metric-value {
-    @apply text-2xl font-bold tabular-nums;
+    @apply text-3xl font-bold text-foreground;
   }
   
   .metric-label {
-    @apply text-xs text-muted-foreground uppercase tracking-wide font-medium;
+    @apply text-sm text-muted-foreground font-medium;
   }
   
-  /* Interactive Elements */
-  .interactive-button {
-    @apply text-sm text-primary hover:text-primary/80 transition-colors duration-200 font-medium;
+  .metric-change {
+    @apply text-xs font-medium flex items-center justify-center gap-1;
   }
   
-  .filter-select {
-    @apply bg-card border border-border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors;
+  /* Professional data visualization */
+  .chart-container {
+    @apply card-premium p-6;
   }
   
-  /* Gradient Backgrounds */
-  .gradient-primary {
-    background: var(--gradient-primary);
+  /* Loading states */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded-md;
   }
   
-  .gradient-accent {
-    background: var(--gradient-accent);
-  }
+  /* Utility gradients */
+  .gradient-primary { background: var(--gradient-primary); }
+  .gradient-accent { background: var(--gradient-accent); }
+  .gradient-surface { background: var(--gradient-surface); }
+  .gradient-hero { background: var(--gradient-hero); }
   
-  .gradient-subtle {
-    background: var(--gradient-subtle);
-  }
-  
-  /* Text Effects */
-  .text-glow {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.3);
-  }
-  
-  /* Dividers */
-  .section-divider {
-    @apply w-px h-12 bg-border;
-  }
-  
-  /* Layout Utilities */
-  .panel-primary {
-    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl shadow-lg;
-  }
-  
-  .panel-secondary {
-    @apply bg-card/60 backdrop-blur-sm border border-border/30 rounded-lg shadow-sm;
-  }
-  
-  /* Enterprise Grid Patterns */
-  .operations-grid {
-    @apply grid grid-cols-1 lg:grid-cols-12 gap-6;
-  }
-  
-  .monitoring-grid {
-    @apply grid grid-cols-1 lg:grid-cols-2 gap-6;
-  }
-  
-  .metrics-grid {
-    @apply grid grid-cols-1 md:grid-cols-3 gap-6;
-  }
+  /* Professional spacing system */
+  .section-padding { @apply px-8 py-6; }
+  .content-padding { @apply px-6 py-4; }
+  .compact-padding { @apply px-4 py-3; }
 }
