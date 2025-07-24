@@ -21,13 +21,19 @@ const Index = () => {
         <div className="dashboard-grid mb-8">
           {/* Left Column - AI Agents */}
           <div className="lg:col-span-3 space-y-6">
-            <AIAgentsPanel />
-            <AgentNetwork />
+            <div id="ai-agents">
+              <AIAgentsPanel />
+            </div>
+            <div id="ai-network">
+              <AgentNetwork />
+            </div>
           </div>
           
           {/* Center Column - Main Content */}
           <div className="lg:col-span-6 space-y-6">
-            <GlobalPortStatus />
+            <div id="port-status">
+              <GlobalPortStatus />
+            </div>
             <WorkflowProgress />
           </div>
           
@@ -39,18 +45,20 @@ const Index = () => {
         </div>
 
         {/* Analytics Section */}
-        <div className="mb-8">
+        <div id="analytics-section" className="mb-8">
           <AnalyticsDashboard />
         </div>
 
         {/* Alerts and Network Visualization */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <RealTimeAlerts />
+          <div id="alerts-section">
+            <RealTimeAlerts />
+          </div>
           <AINetworkVisualization />
         </div>
 
         {/* Shipments Tracking */}
-        <div className="mb-8">
+        <div id="shipments-section" className="mb-8">
           <ShipmentsTracking />
         </div>
       </div>

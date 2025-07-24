@@ -14,6 +14,13 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const DashboardHeader = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
       <div className="container mx-auto px-6">
@@ -37,8 +44,11 @@ const DashboardHeader = () => {
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/20 border border-border">
+              <span className="text-xs font-medium text-muted-foreground">Theme:</span>
+              <ThemeToggle />
+            </div>
             <Button variant="outline" size="sm" className="gap-2">
               <BarChart3 className="h-4 w-4" />
               AI Demo
@@ -58,8 +68,9 @@ const DashboardHeader = () => {
                 <NavigationMenuLink
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    "bg-accent text-accent-foreground font-medium"
+                    "bg-accent text-accent-foreground font-medium cursor-pointer"
                   )}
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
                   <Activity className="mr-2 h-4 w-4" />
                   Dashboard
@@ -74,14 +85,20 @@ const DashboardHeader = () => {
                 <NavigationMenuContent>
                   <div className="grid gap-3 p-6 w-[400px]">
                     <div className="grid grid-cols-2 gap-4">
-                      <NavigationMenuLink className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer">
+                      <NavigationMenuLink 
+                        className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer"
+                        onClick={() => scrollToSection('analytics-section')}
+                      >
                         <BarChart3 className="h-4 w-4" />
                         <div>
                           <div className="text-sm font-medium">Risk Analytics</div>
                           <div className="text-xs text-muted-foreground">Risk heatmaps & trends</div>
                         </div>
                       </NavigationMenuLink>
-                      <NavigationMenuLink className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer">
+                      <NavigationMenuLink 
+                        className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer"
+                        onClick={() => scrollToSection('port-status')}
+                      >
                         <Globe className="h-4 w-4" />
                         <div>
                           <div className="text-sm font-medium">Port Performance</div>
@@ -94,14 +111,20 @@ const DashboardHeader = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink 
+                  className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
+                  onClick={() => scrollToSection('shipments-section')}
+                >
                   <Package className="mr-2 h-4 w-4" />
                   Shipments
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink 
+                  className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
+                  onClick={() => scrollToSection('alerts-section')}
+                >
                   <AlertTriangle className="mr-2 h-4 w-4" />
                   Alerts
                 </NavigationMenuLink>
@@ -115,7 +138,10 @@ const DashboardHeader = () => {
                 <NavigationMenuContent>
                   <div className="grid gap-3 p-6 w-[500px]">
                     <div className="grid grid-cols-1 gap-3">
-                      <NavigationMenuLink className="flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer">
+                      <NavigationMenuLink 
+                        className="flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer"
+                        onClick={() => scrollToSection('ai-network')}
+                      >
                         <div className="p-2 rounded-md bg-primary/10">
                           <Shield className="h-4 w-4 text-primary" />
                         </div>
@@ -124,13 +150,16 @@ const DashboardHeader = () => {
                           <div className="text-xs text-muted-foreground">View AI agent workflows and connections</div>
                         </div>
                       </NavigationMenuLink>
-                      <NavigationMenuLink className="flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer">
+                      <NavigationMenuLink 
+                        className="flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer"
+                        onClick={() => scrollToSection('ai-agents')}
+                      >
                         <div className="p-2 rounded-md bg-secondary/10">
                           <Activity className="h-4 w-4 text-secondary" />
                         </div>
                         <div>
-                          <div className="text-sm font-medium">Tool Calls</div>
-                          <div className="text-xs text-muted-foreground">Monitor AI agent tool execution</div>
+                          <div className="text-sm font-medium">AI Agents Panel</div>
+                          <div className="text-xs text-muted-foreground">Monitor AI agent activities</div>
                         </div>
                       </NavigationMenuLink>
                     </div>
