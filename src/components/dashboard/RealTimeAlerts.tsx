@@ -133,48 +133,51 @@ const RealTimeAlerts = () => {
           return (
             <div
               key={alert.id}
-              className={`border rounded-lg p-3 transition-all hover:shadow-md cursor-pointer ${config.bgColor}`}
+              className={`border rounded-lg p-3 transition-all hover:shadow-md cursor-pointer ${config.bgColor} overflow-hidden`}
             >
-              <div className="flex items-start justify-between mb-2">
-                <div className="flex items-start gap-2 flex-1">
+              <div className="flex items-start justify-between mb-2 gap-2">
+                <div className="flex items-start gap-2 flex-1 min-w-0">
                   <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${config.color} ${alert.isReal ? 'animate-pulse' : ''}`} />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1 mb-1 flex-wrap">
-                      <h4 className="font-semibold text-sm truncate">{alert.title}</h4>
-                      <Badge variant={config.variant} className="text-xs px-1.5 py-0.5">
+                      <h4 className="font-semibold text-sm truncate flex-1">{alert.title}</h4>
+                      <Badge variant={config.variant} className="text-xs px-1.5 py-0.5 flex-shrink-0">
                         {alert.severity.toUpperCase()}
                       </Badge>
                     </div>
                     <p className="text-xs text-muted-foreground mb-2 line-clamp-2">{alert.description}</p>
                     
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-1">
+                    <div className="grid grid-cols-1 gap-1 text-xs">
+                      <div className="flex items-center gap-1 min-w-0">
                         <MapPin className="h-3 w-3 text-muted-foreground flex-shrink-0" />
                         <span className="truncate">{alert.location}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock className="h-3 w-3 text-muted-foreground flex-shrink-0" />
-                        <span>{alert.timeAgo.replace(' ago', '')}</span>
+                        <span className="truncate">{alert.timeAgo.replace(' ago', '')}</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="text-right flex-shrink-0 ml-2">
-                  <div className="flex items-center gap-1">
+                <div className="text-right flex-shrink-0 w-16">
+                  <div className="flex items-center justify-end gap-1 mb-1">
                     <span className="text-lg font-bold text-foreground">{alert.riskScore}</span>
                     <span className="text-xs text-muted-foreground">/10</span>
                   </div>
-                  <div className="text-xs text-muted-foreground">
-                    {alert.affectedShipments} shipments
+                  <div className="text-xs text-muted-foreground text-right">
+                    {alert.affectedShipments}
+                  </div>
+                  <div className="text-xs text-muted-foreground text-right">
+                    shipments
                   </div>
                   {alert.isReal ? (
-                    <div className="flex items-center gap-1 mt-1">
+                    <div className="flex items-center justify-end gap-1 mt-1">
                       <div className="status-indicator status-live w-1.5 h-1.5" />
                       <span className="text-xs text-success font-medium">LIVE</span>
                     </div>
                   ) : (
-                    <div className="flex items-center gap-1 mt-1">
+                    <div className="flex items-center justify-end gap-1 mt-1">
                       <div className="status-indicator status-simulated w-1.5 h-1.5" />
                       <span className="text-xs text-warning font-medium">SIM</span>
                     </div>
@@ -183,18 +186,20 @@ const RealTimeAlerts = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center justify-between pt-2 border-t border-border/50">
-                <div className="flex items-center gap-1">
-                  <Button variant="outline" size="sm" className="h-6 text-xs px-2">
+              <div className="flex items-center justify-between pt-2 border-t border-border/50 gap-2">
+                <div className="flex items-center gap-1 flex-1 min-w-0">
+                  <Button variant="outline" size="sm" className="h-6 text-xs px-2 flex-shrink-0">
                     <Eye className="h-3 w-3 mr-1" />
-                    View Details
+                    <span className="hidden sm:inline">View Details</span>
+                    <span className="sm:hidden">View</span>
                   </Button>
-                  <Button variant="outline" size="sm" className="h-6 text-xs px-2">
+                  <Button variant="outline" size="sm" className="h-6 text-xs px-2 flex-shrink-0">
                     <Zap className="h-3 w-3 mr-1" />
-                    Auto-Resolve
+                    <span className="hidden sm:inline">Auto-Resolve</span>
+                    <span className="sm:hidden">Auto</span>
                   </Button>
                 </div>
-                <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
+                <Badge variant="secondary" className="text-xs px-1.5 py-0.5 flex-shrink-0">
                   {alert.type}
                 </Badge>
               </div>
@@ -204,7 +209,7 @@ const RealTimeAlerts = () => {
         
         <div className="text-center pt-2">
           <Button variant="outline" size="sm" className="gap-2 text-xs">
-            View All ({activeAlerts.length}) Alerts
+            <span>View All ({activeAlerts.length}) Alerts</span>
             <ChevronRight className="h-3 w-3" />
           </Button>
         </div>
