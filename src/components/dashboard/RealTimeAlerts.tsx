@@ -127,7 +127,7 @@ const RealTimeAlerts = () => {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3 px-4 pb-4">
-        {activeAlerts.slice(0, 2).map((alert, index) => {
+        {activeAlerts.map((alert, index) => {
           const config = severityConfig[alert.severity];
           
           return (
