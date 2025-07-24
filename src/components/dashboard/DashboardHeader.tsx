@@ -1,43 +1,157 @@
-import { Activity, AlertTriangle, BarChart3, Shield, Zap } from "lucide-react";
+import { Activity, AlertTriangle, BarChart3, Shield, Zap, Globe, TrendingUp, Users, Package, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
 const DashboardHeader = () => {
   return (
-    <div className="flex items-center justify-between mb-8">
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg gradient-primary">
-            <Shield className="h-6 w-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">
-              ZeroTouch Supply Chain Intelligence
-            </h1>
-            <div className="flex items-center gap-3 mt-1">
-              <span className="text-sm text-muted-foreground">Live Demo</span>
-              <div className="flex items-center gap-2">
-                <div className="status-indicator status-live"></div>
-                <span className="text-sm font-medium text-success">Real-time</span>
+    <div className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <div className="container mx-auto px-6">
+        {/* Top Brand Row */}
+        <div className="flex items-center justify-between py-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg gradient-primary">
+              <Shield className="h-6 w-6 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-foreground">
+                ZeroTouch Supply Chain Intelligence
+              </h1>
+              <div className="flex items-center gap-3 mt-1">
+                <span className="text-xs text-muted-foreground">Live Demo</span>
+                <div className="flex items-center gap-2">
+                  <div className="status-indicator status-live"></div>
+                  <span className="text-xs font-medium text-success">Real-time</span>
+                </div>
               </div>
             </div>
           </div>
+          
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" className="gap-2">
+              <BarChart3 className="h-4 w-4" />
+              AI Demo
+            </Button>
+            <Button variant="default" size="sm" className="gap-2 gradient-primary border-0">
+              <Zap className="h-4 w-4" />
+              Start
+            </Button>
+          </div>
         </div>
-      </div>
-      
-      <div className="flex items-center gap-3">
-        <Button variant="outline" size="sm" className="gap-2">
-          <BarChart3 className="h-4 w-4" />
-          Launch AI Integration Demo
-        </Button>
-        <Button variant="default" size="sm" className="gap-2 gradient-primary border-0">
-          <Zap className="h-4 w-4" />
-          Start Demo
-        </Button>
-        <Button variant="ghost" size="sm" className="gap-2">
-          <AlertTriangle className="h-4 w-4" />
-          Reset
-        </Button>
+
+        {/* Navigation Menu */}
+        <div className="pb-4">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-accent text-accent-foreground font-medium"
+                  )}
+                >
+                  <Activity className="mr-2 h-4 w-4" />
+                  Dashboard
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>
+                  <TrendingUp className="mr-2 h-4 w-4" />
+                  Analytics
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-6 w-[400px]">
+                    <div className="grid grid-cols-2 gap-4">
+                      <NavigationMenuLink className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer">
+                        <BarChart3 className="h-4 w-4" />
+                        <div>
+                          <div className="text-sm font-medium">Risk Analytics</div>
+                          <div className="text-xs text-muted-foreground">Risk heatmaps & trends</div>
+                        </div>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer">
+                        <Globe className="h-4 w-4" />
+                        <div>
+                          <div className="text-sm font-medium">Port Performance</div>
+                          <div className="text-xs text-muted-foreground">Global port metrics</div>
+                        </div>
+                      </NavigationMenuLink>
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Package className="mr-2 h-4 w-4" />
+                  Shipments
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <AlertTriangle className="mr-2 h-4 w-4" />
+                  Alerts
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>
+                  <Shield className="mr-2 h-4 w-4" />
+                  AI Agents
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <div className="grid gap-3 p-6 w-[500px]">
+                    <div className="grid grid-cols-1 gap-3">
+                      <NavigationMenuLink className="flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer">
+                        <div className="p-2 rounded-md bg-primary/10">
+                          <Shield className="h-4 w-4 text-primary" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-medium">Agent Network</div>
+                          <div className="text-xs text-muted-foreground">View AI agent workflows and connections</div>
+                        </div>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink className="flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer">
+                        <div className="p-2 rounded-md bg-secondary/10">
+                          <Activity className="h-4 w-4 text-secondary" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-medium">Tool Calls</div>
+                          <div className="text-xs text-muted-foreground">Monitor AI agent tool execution</div>
+                        </div>
+                      </NavigationMenuLink>
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Users className="mr-2 h-4 w-4" />
+                  Users
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <Settings className="mr-2 h-4 w-4" />
+                  Settings
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
       </div>
     </div>
   );

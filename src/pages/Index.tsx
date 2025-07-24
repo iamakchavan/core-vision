@@ -13,8 +13,8 @@ import ShipmentsTracking from "@/components/dashboard/ShipmentsTracking";
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
-      <div className="container mx-auto p-6">
-        <DashboardHeader />
+      <DashboardHeader />
+      <div className="container mx-auto p-6 pt-8">
         
         {/* Main Dashboard Grid */}
         <div className="dashboard-grid mb-8">
