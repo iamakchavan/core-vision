@@ -23,133 +23,133 @@ const initialNodes: Node[] = [
     id: 'satellite',
     type: 'input',
     position: { x: 50, y: 50 },
-    data: { label: '🛰️ Satellite Data' },
-    style: { background: '#E3F2FD', border: '2px solid #2196F3' }
+    data: { label: '🛰️ Satellite' },
+    style: { background: '#E3F2FD', border: '2px solid #2196F3', fontSize: '12px' }
   },
   {
     id: 'iot',
     type: 'input', 
     position: { x: 50, y: 150 },
-    data: { label: '📡 IoT Sensors' },
-    style: { background: '#E8F5E8', border: '2px solid #4CAF50' }
+    data: { label: '📡 IoT' },
+    style: { background: '#E8F5E8', border: '2px solid #4CAF50', fontSize: '12px' }
   },
   {
     id: 'weather',
     type: 'input',
     position: { x: 50, y: 250 },
-    data: { label: '🌤️ Weather APIs' },
-    style: { background: '#FFF3E0', border: '2px solid #FF9800' }
+    data: { label: '🌤️ Weather' },
+    style: { background: '#FFF3E0', border: '2px solid #FF9800', fontSize: '12px' }
   },
 
   // AI Agents
   {
     id: 'watchtower',
-    position: { x: 300, y: 50 },
+    position: { x: 250, y: 50 },
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Eye className="h-5 w-5 text-blue-600" />
+          <Eye className="h-4 w-4 text-blue-600" />
           <span className="text-xs font-medium">Watchtower</span>
-          <Badge variant="secondary" className="text-xs">Active</Badge>
+          <Badge variant="secondary" className="text-xs px-1 py-0.5">Active</Badge>
         </div>
       )
     },
-    style: { background: '#F3E5F5', border: '2px solid #9C27B0', width: 120, height: 80 }
+    style: { background: '#F3E5F5', border: '2px solid #9C27B0', width: 100, height: 70 }
   },
   {
     id: 'oracle',
-    position: { x: 450, y: 50 },
+    position: { x: 380, y: 50 },
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Cpu className="h-5 w-5 text-purple-600" />
+          <Cpu className="h-4 w-4 text-purple-600" />
           <span className="text-xs font-medium">Oracle</span>
-          <Badge variant="outline" className="text-xs">Analyzing</Badge>
+          <Badge variant="outline" className="text-xs px-1 py-0.5">Live</Badge>
         </div>
       )
     },
-    style: { background: '#F3E5F5', border: '2px solid #673AB7', width: 120, height: 80 }
+    style: { background: '#F3E5F5', border: '2px solid #673AB7', width: 100, height: 70 }
   },
   {
     id: 'diplomat',
-    position: { x: 375, y: 200 },
+    position: { x: 315, y: 170 },
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Target className="h-5 w-5 text-green-600" />
+          <Target className="h-4 w-4 text-green-600" />
           <span className="text-xs font-medium">Diplomat</span>
-          <Badge variant="secondary" className="text-xs">Ready</Badge>
+          <Badge variant="secondary" className="text-xs px-1 py-0.5">Ready</Badge>
         </div>
       )
     },
-    style: { background: '#E8F5E8', border: '2px solid #4CAF50', width: 120, height: 80 }
+    style: { background: '#E8F5E8', border: '2px solid #4CAF50', width: 100, height: 70 }
   },
   {
     id: 'commander',
-    position: { x: 300, y: 350 },
+    position: { x: 250, y: 290 },
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Zap className="h-5 w-5 text-orange-600" />
+          <Zap className="h-4 w-4 text-orange-600" />
           <span className="text-xs font-medium">Commander</span>
-          <Badge variant="secondary" className="text-xs">Idle</Badge>
+          <Badge variant="secondary" className="text-xs px-1 py-0.5">Idle</Badge>
         </div>
       )
     },
-    style: { background: '#FFF3E0', border: '2px solid #FF9800', width: 120, height: 80 }
+    style: { background: '#FFF3E0', border: '2px solid #FF9800', width: 100, height: 70 }
   },
   {
     id: 'guardian',
-    position: { x: 450, y: 350 },
+    position: { x: 380, y: 290 },
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Shield className="h-5 w-5 text-red-600" />
+          <Shield className="h-4 w-4 text-red-600" />
           <span className="text-xs font-medium">Guardian</span>
-          <Badge variant="secondary" className="text-xs">Monitoring</Badge>
+          <Badge variant="secondary" className="text-xs px-1 py-0.5">Monitor</Badge>
         </div>
       )
     },
-    style: { background: '#FFEBEE', border: '2px solid #F44336', width: 120, height: 80 }
+    style: { background: '#FFEBEE', border: '2px solid #F44336', width: 100, height: 70 }
   },
 
   // Processing Center
   {
     id: 'processing',
-    position: { x: 650, y: 200 },
+    position: { x: 550, y: 170 },
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Server className="h-6 w-6 text-blue-600" />
-          <span className="text-sm font-medium">Processing Hub</span>
-          <div className="text-xs text-muted-foreground">Neural Network</div>
+          <Server className="h-5 w-5 text-blue-600" />
+          <span className="text-sm font-medium">Hub</span>
+          <div className="text-xs text-muted-foreground">Neural</div>
         </div>
       )
     },
-    style: { background: '#E3F2FD', border: '2px solid #2196F3', width: 140, height: 100 }
+    style: { background: '#E3F2FD', border: '2px solid #2196F3', width: 120, height: 80 }
   },
 
   // Output Systems
   {
     id: 'dashboard',
     type: 'output',
-    position: { x: 850, y: 150 },
+    position: { x: 720, y: 100 },
     data: { label: '📊 Dashboard' },
-    style: { background: '#F3E5F5', border: '2px solid #9C27B0' }
+    style: { background: '#F3E5F5', border: '2px solid #9C27B0', fontSize: '12px' }
   },
   {
     id: 'alerts',
     type: 'output',
-    position: { x: 850, y: 250 },
-    data: { label: '🚨 Alert System' },
-    style: { background: '#FFEBEE', border: '2px solid #F44336' }
+    position: { x: 720, y: 200 },
+    data: { label: '🚨 Alerts' },
+    style: { background: '#FFEBEE', border: '2px solid #F44336', fontSize: '12px' }
   },
   {
     id: 'automation',
     type: 'output',
-    position: { x: 850, y: 350 },
-    data: { label: '⚡ Automation' },
-    style: { background: '#FFF3E0', border: '2px solid #FF9800' }
+    position: { x: 720, y: 300 },
+    data: { label: '⚡ Auto' },
+    style: { background: '#FFF3E0', border: '2px solid #FF9800', fontSize: '12px' }
   }
 ];
 
@@ -205,10 +205,10 @@ const AINetworkVisualization = () => {
                 ...node.data,
                 label: (
                   <div className="flex flex-col items-center gap-1">
-                    <Server className="h-6 w-6 text-blue-600" />
-                    <span className="text-sm font-medium">Processing Hub</span>
+                    <Server className="h-5 w-5 text-blue-600" />
+                    <span className="text-sm font-medium">Hub</span>
                     <div className="text-xs text-muted-foreground">
-                      {processingCount} operations/min
+                      {processingCount} ops
                     </div>
                     <div className="w-4 h-1 bg-blue-200 rounded-full overflow-hidden">
                       <div className="w-full h-full bg-blue-500 animate-pulse" />
@@ -228,17 +228,20 @@ const AINetworkVisualization = () => {
 
   return (
     <Card className="card-maritime">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <Network className="h-5 w-5 text-primary" />
-          AI Agent Network Visualization
-          <Badge variant="secondary" className="text-xs ml-auto">
+      <CardHeader className="pb-3">
+        <CardTitle className="flex items-center justify-between text-base">
+          <div className="flex items-center gap-2">
+            <Network className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">AI Agent Network Visualization</span>
+            <span className="sm:hidden">AI Network</span>
+          </div>
+          <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
             Real-time
           </Badge>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="h-96 border border-border rounded-lg overflow-hidden">
+      <CardContent className="px-4 pb-4">
+        <div className="h-64 sm:h-80 lg:h-96 border border-border rounded-lg overflow-hidden">
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -251,30 +254,34 @@ const AINetworkVisualization = () => {
             nodesDraggable={true}
             nodesConnectable={false}
             elementsSelectable={true}
+            minZoom={0.3}
+            maxZoom={1.5}
+            defaultViewport={{ x: 0, y: 0, zoom: 0.5 }}
           >
-            <Controls />
+            <Controls className="hidden sm:flex" />
             <MiniMap 
               zoomable 
               pannable 
               nodeClassName={nodeClassName}
               style={{ backgroundColor: "hsl(var(--background))" }}
+              className="hidden lg:block"
             />
             <Background />
           </ReactFlow>
         </div>
         
-        <div className="mt-4 grid grid-cols-3 gap-4 text-xs">
-          <div className="text-center">
-            <div className="font-medium">Data Ingestion</div>
-            <div className="text-muted-foreground">3 sources active</div>
+        <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
+          <div className="text-center p-2 bg-muted/30 rounded-lg">
+            <div className="font-medium text-sm">Sources</div>
+            <div className="text-muted-foreground">3 active</div>
           </div>
-          <div className="text-center">
-            <div className="font-medium">AI Processing</div>
+          <div className="text-center p-2 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg">
+            <div className="font-medium text-sm text-blue-600 dark:text-blue-400">Processing</div>
             <div className="text-muted-foreground">{processingCount} ops/min</div>
           </div>
-          <div className="text-center">
-            <div className="font-medium">Output Systems</div>
-            <div className="text-muted-foreground">3 endpoints</div>
+          <div className="text-center p-2 bg-green-500/10 dark:bg-green-500/20 rounded-lg">
+            <div className="font-medium text-sm text-green-600 dark:text-green-400">Outputs</div>
+            <div className="text-muted-foreground">3 systems</div>
           </div>
         </div>
       </CardContent>
