@@ -115,15 +115,15 @@ const statusConfig = {
 };
 
 const priorityConfig = {
-  "critical": { color: "text-red-600", bg: "bg-red-50 border-red-200" },
-  "high": { color: "text-orange-600", bg: "bg-orange-50 border-orange-200" },
-  "medium": { color: "text-blue-600", bg: "bg-blue-50 border-blue-200" }
+  "critical": { color: "text-red-600 dark:text-red-400", bg: "bg-red-500/10 border-red-500/20 dark:bg-red-500/20 dark:border-red-500/30" },
+  "high": { color: "text-orange-600 dark:text-orange-400", bg: "bg-orange-500/10 border-orange-500/20 dark:bg-orange-500/20 dark:border-orange-500/30" },
+  "medium": { color: "text-blue-600 dark:text-blue-400", bg: "bg-blue-500/10 border-blue-500/20 dark:bg-blue-500/20 dark:border-blue-500/30" }
 };
 
 const riskConfig = {
-  "high": { color: "text-red-600", bg: "bg-red-50" },
-  "medium": { color: "text-yellow-600", bg: "bg-yellow-50" },
-  "low": { color: "text-green-600", bg: "bg-green-50" }
+  "high": { color: "text-red-600 dark:text-red-400", bg: "bg-red-500/10 dark:bg-red-500/20" },
+  "medium": { color: "text-yellow-600 dark:text-yellow-400", bg: "bg-yellow-500/10 dark:bg-yellow-500/20" },
+  "low": { color: "text-green-600 dark:text-green-400", bg: "bg-green-500/10 dark:bg-green-500/20" }
 };
 
 const ShipmentsTracking = () => {
@@ -215,20 +215,20 @@ const ShipmentsTracking = () => {
             <div className="text-lg font-bold text-foreground">{shipments.length}</div>
             <div className="text-xs text-muted-foreground">Total Shipments</div>
           </div>
-          <div className="text-center p-3 bg-blue-50 rounded-lg">
-            <div className="text-lg font-bold text-blue-600">
+          <div className="text-center p-3 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg">
+            <div className="text-lg font-bold text-blue-600 dark:text-blue-400">
               {shipments.filter(s => s.status === 'in-transit').length}
             </div>
             <div className="text-xs text-muted-foreground">In Transit</div>
           </div>
-          <div className="text-center p-3 bg-red-50 rounded-lg">
-            <div className="text-lg font-bold text-red-600">
+          <div className="text-center p-3 bg-red-500/10 dark:bg-red-500/20 rounded-lg">
+            <div className="text-lg font-bold text-red-600 dark:text-red-400">
               {shipments.filter(s => s.status === 'delayed').length}
             </div>
             <div className="text-xs text-muted-foreground">Delayed</div>
           </div>
-          <div className="text-center p-3 bg-green-50 rounded-lg">
-            <div className="text-lg font-bold text-green-600">
+          <div className="text-center p-3 bg-green-500/10 dark:bg-green-500/20 rounded-lg">
+            <div className="text-lg font-bold text-green-600 dark:text-green-400">
               {shipments.filter(s => s.status === 'arrived').length}
             </div>
             <div className="text-xs text-muted-foreground">Delivered</div>
@@ -302,7 +302,7 @@ const ShipmentsTracking = () => {
                       )}
 
                       {shipment.estimatedDelay > 0 && (
-                        <div className="mt-2 p-2 bg-red-50 rounded text-xs text-red-600">
+                        <div className="mt-2 p-2 bg-red-500/10 dark:bg-red-500/20 rounded text-xs text-red-600 dark:text-red-400">
                           ⚠️ Estimated delay: {shipment.estimatedDelay} hours
                         </div>
                       )}

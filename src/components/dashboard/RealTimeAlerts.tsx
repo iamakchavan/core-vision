@@ -89,19 +89,19 @@ const severityConfig = {
   critical: {
     color: "bg-red-500",
     textColor: "text-red-500",
-    bgColor: "bg-red-50 border-red-200",
+    bgColor: "bg-red-500/10 border-red-500/20 dark:bg-red-500/20 dark:border-red-500/30",
     variant: "destructive" as const
   },
   high: {
     color: "bg-orange-500", 
     textColor: "text-orange-500",
-    bgColor: "bg-orange-50 border-orange-200",
+    bgColor: "bg-orange-500/10 border-orange-500/20 dark:bg-orange-500/20 dark:border-orange-500/30",
     variant: "destructive" as const
   },
   medium: {
     color: "bg-yellow-500",
-    textColor: "text-yellow-600",
-    bgColor: "bg-yellow-50 border-yellow-200", 
+    textColor: "text-yellow-600 dark:text-yellow-400",
+    bgColor: "bg-yellow-500/10 border-yellow-500/20 dark:bg-yellow-500/20 dark:border-yellow-500/30", 
     variant: "outline" as const
   }
 };
