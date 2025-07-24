@@ -24,36 +24,21 @@ const initialNodes: Node[] = [
     type: 'input',
     position: { x: 50, y: 50 },
     data: { label: '🛰️ Satellite' },
-    style: { 
-      background: 'hsl(var(--primary) / 0.1)', 
-      border: '2px solid hsl(var(--primary))', 
-      fontSize: '12px',
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#E3F2FD', border: '2px solid #2196F3', fontSize: '12px' }
   },
   {
     id: 'iot',
     type: 'input', 
     position: { x: 50, y: 150 },
     data: { label: '📡 IoT' },
-    style: { 
-      background: 'hsl(var(--secondary) / 0.1)', 
-      border: '2px solid hsl(var(--secondary))', 
-      fontSize: '12px',
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#E8F5E8', border: '2px solid #4CAF50', fontSize: '12px' }
   },
   {
     id: 'weather',
     type: 'input',
     position: { x: 50, y: 250 },
     data: { label: '🌤️ Weather' },
-    style: { 
-      background: 'hsl(var(--accent) / 0.1)', 
-      border: '2px solid hsl(var(--accent))', 
-      fontSize: '12px',
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#FFF3E0', border: '2px solid #FF9800', fontSize: '12px' }
   },
 
   // AI Agents
@@ -63,19 +48,13 @@ const initialNodes: Node[] = [
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Eye className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-          <span className="text-xs font-medium text-foreground">Watchtower</span>
+          <Eye className="h-4 w-4 text-blue-600" />
+          <span className="text-xs font-medium">Watchtower</span>
           <Badge variant="secondary" className="text-xs px-1 py-0.5">Active</Badge>
         </div>
       )
     },
-    style: { 
-      background: 'hsl(var(--muted))', 
-      border: '2px solid hsl(var(--primary))', 
-      width: 100, 
-      height: 70,
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#F3E5F5', border: '2px solid #9C27B0', width: 100, height: 70 }
   },
   {
     id: 'oracle',
@@ -83,19 +62,13 @@ const initialNodes: Node[] = [
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Cpu className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-          <span className="text-xs font-medium text-foreground">Oracle</span>
+          <Cpu className="h-4 w-4 text-purple-600" />
+          <span className="text-xs font-medium">Oracle</span>
           <Badge variant="outline" className="text-xs px-1 py-0.5">Live</Badge>
         </div>
       )
     },
-    style: { 
-      background: 'hsl(var(--muted))', 
-      border: '2px solid hsl(var(--secondary))', 
-      width: 100, 
-      height: 70,
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#F3E5F5', border: '2px solid #673AB7', width: 100, height: 70 }
   },
   {
     id: 'diplomat',
@@ -103,19 +76,13 @@ const initialNodes: Node[] = [
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Target className="h-4 w-4 text-green-600 dark:text-green-400" />
-          <span className="text-xs font-medium text-foreground">Diplomat</span>
+          <Target className="h-4 w-4 text-green-600" />
+          <span className="text-xs font-medium">Diplomat</span>
           <Badge variant="secondary" className="text-xs px-1 py-0.5">Ready</Badge>
         </div>
       )
     },
-    style: { 
-      background: 'hsl(var(--muted))', 
-      border: '2px solid hsl(var(--accent))', 
-      width: 100, 
-      height: 70,
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#E8F5E8', border: '2px solid #4CAF50', width: 100, height: 70 }
   },
   {
     id: 'commander',
@@ -123,19 +90,13 @@ const initialNodes: Node[] = [
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Zap className="h-4 w-4 text-orange-600 dark:text-orange-400" />
-          <span className="text-xs font-medium text-foreground">Commander</span>
+          <Zap className="h-4 w-4 text-orange-600" />
+          <span className="text-xs font-medium">Commander</span>
           <Badge variant="secondary" className="text-xs px-1 py-0.5">Idle</Badge>
         </div>
       )
     },
-    style: { 
-      background: 'hsl(var(--muted))', 
-      border: '2px solid hsl(var(--destructive))', 
-      width: 100, 
-      height: 70,
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#FFF3E0', border: '2px solid #FF9800', width: 100, height: 70 }
   },
   {
     id: 'guardian',
@@ -143,19 +104,13 @@ const initialNodes: Node[] = [
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Shield className="h-4 w-4 text-red-600 dark:text-red-400" />
-          <span className="text-xs font-medium text-foreground">Guardian</span>
+          <Shield className="h-4 w-4 text-red-600" />
+          <span className="text-xs font-medium">Guardian</span>
           <Badge variant="secondary" className="text-xs px-1 py-0.5">Monitor</Badge>
         </div>
       )
     },
-    style: { 
-      background: 'hsl(var(--muted))', 
-      border: '2px solid hsl(var(--destructive))', 
-      width: 100, 
-      height: 70,
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#FFEBEE', border: '2px solid #F44336', width: 100, height: 70 }
   },
 
   // Processing Center
@@ -165,19 +120,13 @@ const initialNodes: Node[] = [
     data: { 
       label: (
         <div className="flex flex-col items-center gap-1">
-          <Server className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-          <span className="text-sm font-medium text-foreground">Hub</span>
+          <Server className="h-5 w-5 text-blue-600" />
+          <span className="text-sm font-medium">Hub</span>
           <div className="text-xs text-muted-foreground">Neural</div>
         </div>
       )
     },
-    style: { 
-      background: 'hsl(var(--card))', 
-      border: '2px solid hsl(var(--primary))', 
-      width: 120, 
-      height: 80,
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#E3F2FD', border: '2px solid #2196F3', width: 120, height: 80 }
   },
 
   // Output Systems
@@ -186,62 +135,47 @@ const initialNodes: Node[] = [
     type: 'output',
     position: { x: 720, y: 100 },
     data: { label: '📊 Dashboard' },
-    style: { 
-      background: 'hsl(var(--secondary) / 0.1)', 
-      border: '2px solid hsl(var(--secondary))', 
-      fontSize: '12px',
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#F3E5F5', border: '2px solid #9C27B0', fontSize: '12px' }
   },
   {
     id: 'alerts',
     type: 'output',
     position: { x: 720, y: 200 },
     data: { label: '🚨 Alerts' },
-    style: { 
-      background: 'hsl(var(--destructive) / 0.1)', 
-      border: '2px solid hsl(var(--destructive))', 
-      fontSize: '12px',
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#FFEBEE', border: '2px solid #F44336', fontSize: '12px' }
   },
   {
     id: 'automation',
     type: 'output',
     position: { x: 720, y: 300 },
     data: { label: '⚡ Auto' },
-    style: { 
-      background: 'hsl(var(--accent) / 0.1)', 
-      border: '2px solid hsl(var(--accent))', 
-      fontSize: '12px',
-      color: 'hsl(var(--foreground))'
-    }
+    style: { background: '#FFF3E0', border: '2px solid #FF9800', fontSize: '12px' }
   }
 ];
 
 const initialEdges: Edge[] = [
   // Input to Agents
-  { id: 'e1', source: 'satellite', target: 'watchtower', animated: true, style: { stroke: 'hsl(var(--primary))' } },
-  { id: 'e2', source: 'iot', target: 'watchtower', animated: true, style: { stroke: 'hsl(var(--secondary))' } },
-  { id: 'e3', source: 'weather', target: 'oracle', animated: true, style: { stroke: 'hsl(var(--accent))' } },
+  { id: 'e1', source: 'satellite', target: 'watchtower', animated: true, style: { stroke: '#2196F3' } },
+  { id: 'e2', source: 'iot', target: 'watchtower', animated: true, style: { stroke: '#4CAF50' } },
+  { id: 'e3', source: 'weather', target: 'oracle', animated: true, style: { stroke: '#FF9800' } },
 
   // Agent interactions
-  { id: 'e4', source: 'watchtower', target: 'oracle', animated: true, style: { stroke: 'hsl(var(--primary))' } },
-  { id: 'e5', source: 'oracle', target: 'diplomat', animated: true, style: { stroke: 'hsl(var(--secondary))' } },
-  { id: 'e6', source: 'diplomat', target: 'commander', animated: true, style: { stroke: 'hsl(var(--accent))' } },
-  { id: 'e7', source: 'commander', target: 'guardian', animated: true, style: { stroke: 'hsl(var(--destructive))' } },
+  { id: 'e4', source: 'watchtower', target: 'oracle', animated: true, style: { stroke: '#9C27B0' } },
+  { id: 'e5', source: 'oracle', target: 'diplomat', animated: true, style: { stroke: '#673AB7' } },
+  { id: 'e6', source: 'diplomat', target: 'commander', animated: true, style: { stroke: '#4CAF50' } },
+  { id: 'e7', source: 'commander', target: 'guardian', animated: true, style: { stroke: '#FF9800' } },
 
   // To processing hub
-  { id: 'e8', source: 'watchtower', target: 'processing', style: { stroke: 'hsl(var(--primary))' } },
-  { id: 'e9', source: 'oracle', target: 'processing', style: { stroke: 'hsl(var(--secondary))' } },
-  { id: 'e10', source: 'diplomat', target: 'processing', style: { stroke: 'hsl(var(--accent))' } },
-  { id: 'e11', source: 'commander', target: 'processing', style: { stroke: 'hsl(var(--destructive))' } },
-  { id: 'e12', source: 'guardian', target: 'processing', style: { stroke: 'hsl(var(--destructive))' } },
+  { id: 'e8', source: 'watchtower', target: 'processing', style: { stroke: '#9C27B0' } },
+  { id: 'e9', source: 'oracle', target: 'processing', style: { stroke: '#673AB7' } },
+  { id: 'e10', source: 'diplomat', target: 'processing', style: { stroke: '#4CAF50' } },
+  { id: 'e11', source: 'commander', target: 'processing', style: { stroke: '#FF9800' } },
+  { id: 'e12', source: 'guardian', target: 'processing', style: { stroke: '#F44336' } },
 
   // Processing to outputs
-  { id: 'e13', source: 'processing', target: 'dashboard', animated: true, style: { stroke: 'hsl(var(--primary))' } },
-  { id: 'e14', source: 'processing', target: 'alerts', animated: true, style: { stroke: 'hsl(var(--destructive))' } },
-  { id: 'e15', source: 'processing', target: 'automation', animated: true, style: { stroke: 'hsl(var(--accent))' } }
+  { id: 'e13', source: 'processing', target: 'dashboard', animated: true, style: { stroke: '#2196F3' } },
+  { id: 'e14', source: 'processing', target: 'alerts', animated: true, style: { stroke: '#F44336' } },
+  { id: 'e15', source: 'processing', target: 'automation', animated: true, style: { stroke: '#FF9800' } }
 ];
 
 const nodeClassName = (node: Node) => node.type || 'default';
@@ -271,13 +205,13 @@ const AINetworkVisualization = () => {
                 ...node.data,
                 label: (
                   <div className="flex flex-col items-center gap-1">
-                    <Server className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                    <span className="text-sm font-medium text-foreground">Hub</span>
+                    <Server className="h-5 w-5 text-blue-600" />
+                    <span className="text-sm font-medium">Hub</span>
                     <div className="text-xs text-muted-foreground">
                       {processingCount} ops
                     </div>
-                    <div className="w-4 h-1 bg-blue-200 dark:bg-blue-800 rounded-full overflow-hidden">
-                      <div className="w-full h-full bg-blue-500 dark:bg-blue-400 animate-pulse" />
+                    <div className="w-4 h-1 bg-blue-200 rounded-full overflow-hidden">
+                      <div className="w-full h-full bg-blue-500 animate-pulse" />
                     </div>
                   </div>
                 )
