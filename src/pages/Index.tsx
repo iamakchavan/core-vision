@@ -16,6 +16,7 @@ const Index = () => {
       <DashboardHeader />
       <div className="container mx-auto p-6 pt-8">
         
+        
         {/* Main Dashboard Grid */}
         <div className="dashboard-grid mb-8">
           {/* Left Column - AI Agents */}
