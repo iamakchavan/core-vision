@@ -49,7 +49,7 @@ const initialNodes: Node[] = [
       label: (
         <div className="flex flex-col items-center gap-1">
           <Eye className="h-4 w-4 text-blue-600" />
-          <span className="text-xs font-medium text-foreground">Watchtower</span>
+          <span className="text-xs font-medium">Watchtower</span>
           <Badge variant="secondary" className="text-xs px-1 py-0.5">Active</Badge>
         </div>
       )
@@ -63,7 +63,7 @@ const initialNodes: Node[] = [
       label: (
         <div className="flex flex-col items-center gap-1">
           <Cpu className="h-4 w-4 text-purple-600" />
-          <span className="text-xs font-medium text-foreground">Oracle</span>
+          <span className="text-xs font-medium">Oracle</span>
           <Badge variant="outline" className="text-xs px-1 py-0.5">Live</Badge>
         </div>
       )
@@ -77,7 +77,7 @@ const initialNodes: Node[] = [
       label: (
         <div className="flex flex-col items-center gap-1">
           <Target className="h-4 w-4 text-green-600" />
-          <span className="text-xs font-medium text-foreground">Diplomat</span>
+          <span className="text-xs font-medium">Diplomat</span>
           <Badge variant="secondary" className="text-xs px-1 py-0.5">Ready</Badge>
         </div>
       )
@@ -91,7 +91,7 @@ const initialNodes: Node[] = [
       label: (
         <div className="flex flex-col items-center gap-1">
           <Zap className="h-4 w-4 text-orange-600" />
-          <span className="text-xs font-medium text-foreground">Commander</span>
+          <span className="text-xs font-medium">Commander</span>
           <Badge variant="secondary" className="text-xs px-1 py-0.5">Idle</Badge>
         </div>
       )
@@ -105,7 +105,7 @@ const initialNodes: Node[] = [
       label: (
         <div className="flex flex-col items-center gap-1">
           <Shield className="h-4 w-4 text-red-600" />
-          <span className="text-xs font-medium text-foreground">Guardian</span>
+          <span className="text-xs font-medium">Guardian</span>
           <Badge variant="secondary" className="text-xs px-1 py-0.5">Monitor</Badge>
         </div>
       )
@@ -121,7 +121,7 @@ const initialNodes: Node[] = [
       label: (
         <div className="flex flex-col items-center gap-1">
           <Server className="h-5 w-5 text-blue-600" />
-          <span className="text-sm font-medium text-foreground">Hub</span>
+          <span className="text-sm font-medium">Hub</span>
           <div className="text-xs text-muted-foreground">Neural</div>
         </div>
       )
@@ -206,7 +206,7 @@ const AINetworkVisualization = () => {
                 label: (
                   <div className="flex flex-col items-center gap-1">
                     <Server className="h-5 w-5 text-blue-600" />
-                    <span className="text-sm font-medium text-foreground">Hub</span>
+                    <span className="text-sm font-medium">Hub</span>
                     <div className="text-xs text-muted-foreground">
                       {processingCount} ops
                     </div>
