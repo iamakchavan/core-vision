@@ -12,8 +12,11 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { useAISimulation } from "@/contexts/AISimulationContext";
 
 const DashboardHeader = () => {
+  const { simulation, startSimulation, stopSimulation } = useAISimulation();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -56,9 +59,21 @@ const DashboardHeader = () => {
               <span className="text-sm font-medium text-foreground">Dark Mode:</span>
               <ThemeToggle />
             </div>
-            <Button variant="outline" size="sm" className="gap-2">
-              <BarChart3 className="h-4 w-4" />
-              AI Demo
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className={cn(
+                "gap-2 transition-all duration-300",
+                simulation.isActive && "bg-primary/10 border-primary text-primary animate-pulse"
+              )}
+              onClick={simulation.isActive ? stopSimulation : startSimulation}
+              disabled={simulation.isActive}
+            >
+              <BarChart3 className={cn(
+                "h-4 w-4 transition-transform duration-300",
+                simulation.isActive && "rotate-180"
+              )} />
+              {simulation.isActive ? `AI Demo (${simulation.currentStep}/${simulation.totalSteps})` : "AI Demo"}
             </Button>
             <Button variant="default" size="sm" className="gap-2 gradient-primary border-0">
               <Zap className="h-4 w-4" />

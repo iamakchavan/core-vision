@@ -9,11 +9,13 @@ import AnalyticsDashboard from "@/components/dashboard/AnalyticsDashboard";
 import RealTimeAlerts from "@/components/dashboard/RealTimeAlerts";
 import AINetworkVisualization from "@/components/dashboard/AINetworkVisualization";
 import ShipmentsTracking from "@/components/dashboard/ShipmentsTracking";
+import { AISimulationProvider } from "@/contexts/AISimulationContext";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
-      <DashboardHeader />
+    <AISimulationProvider>
+      <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+        <DashboardHeader />
       <div className="container mx-auto p-6 pt-8">
         
         
@@ -63,6 +65,7 @@ const Index = () => {
         </div>
       </div>
     </div>
+    </AISimulationProvider>
   );
 };
 
