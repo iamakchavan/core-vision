@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, DollarSign, Leaf, Clock, Users } from "lucide-react";
+import { useAISimulation } from "@/contexts/AISimulationContext";
 
 const metrics = [
   {
@@ -37,6 +38,26 @@ const metrics = [
 ];
 
 const PerformanceMetrics = () => {
+  const { simulation } = useAISimulation();
+  
+  const getMetricValue = (metricId: string) => {
+    if (!simulation.isActive && simulation.currentStep === 0) {
+      return "—";
+    }
+    
+    switch (metricId) {
+      case "cost-savings":
+        return simulation.currentStep >= 2 ? "$2.4M" : "—";
+      case "carbon-reduction":
+        return simulation.currentStep >= 4 ? "18%" : "—";
+      case "resolution-time":
+        return simulation.currentStep >= 3 ? "76%" : "—";
+      case "human-labor":
+        return simulation.currentStep >= 5 ? `${simulation.shipmentsProcessed}h` : "—";
+      default:
+        return "—";
+    }
+  };
   return (
     <Card className="card-maritime lg:col-span-3">
       <CardHeader>
@@ -61,7 +82,11 @@ const PerformanceMetrics = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-lg font-bold text-foreground">{metric.value}</div>
+                  <div className={`text-lg font-bold transition-colors ${
+                    getMetricValue(metric.id) !== "—" ? "text-primary animate-fade-in" : "text-foreground"
+                  }`}>
+                    {getMetricValue(metric.id)}
+                  </div>
                 </div>
               </div>
             );

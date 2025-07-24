@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Eye, Cpu, Zap, Target, Shield } from "lucide-react";
+import { useAISimulation } from "@/contexts/AISimulationContext";
 
 const aiAgents = [
   {
@@ -46,6 +47,27 @@ const aiAgents = [
 ];
 
 const AIAgentsPanel = () => {
+  const { simulation } = useAISimulation();
+  
+  const getAgentStatus = (agentName: string) => {
+    if (!simulation.isActive) return "idle";
+    
+    // Map our AI agents to simulation agents
+    const agentMap: Record<string, string[]> = {
+      "watchtower": ["Risk Analyzer", "Port Monitor"],
+      "oracle": ["Risk Analyzer", "Demand Forecaster", "Weather Analyzer"],
+      "diplomat": ["Compliance Checker", "Document Processor"],
+      "commander": ["Route Optimizer", "Shipment Tracker"],
+      "guardian": ["Compliance Checker", "Risk Analyzer"]
+    };
+    
+    const mappedAgents = agentMap[agentName.toLowerCase()] || [];
+    const isActive = simulation.activeAgents.some(activeAgent => 
+      mappedAgents.includes(activeAgent)
+    );
+    
+    return isActive ? "active" : "standby";
+  };
   return (
     <Card className="card-maritime">
       <CardHeader>
@@ -57,22 +79,36 @@ const AIAgentsPanel = () => {
       <CardContent className="space-y-4">
         {aiAgents.map((agent) => {
           const IconComponent = agent.icon;
+          const status = getAgentStatus(agent.id);
+          const isActive = status === "active";
+          
           return (
             <div
               key={agent.id}
-              className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors"
+              className={`flex items-center justify-between p-3 rounded-lg border transition-all duration-300 ${
+                isActive 
+                  ? "border-primary bg-primary/5 animate-fade-in" 
+                  : "border-border hover:bg-muted/50"
+              }`}
             >
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-muted">
-                  <IconComponent className="h-4 w-4 text-muted-foreground" />
+                <div className={`p-2 rounded-lg transition-colors ${
+                  isActive ? "bg-primary/20" : "bg-muted"
+                }`}>
+                  <IconComponent className={`h-4 w-4 transition-colors ${
+                    isActive ? "text-primary animate-pulse" : "text-muted-foreground"
+                  }`} />
                 </div>
                 <div>
                   <div className="font-medium text-sm">{agent.name}</div>
-                  <div className="text-xs text-muted-foreground">{agent.type}</div>
+                  <div className="text-xs text-muted-foreground">{agent.description}</div>
                 </div>
               </div>
-              <Badge variant="secondary" className="text-xs">
-                {agent.status}
+              <Badge 
+                variant={isActive ? "default" : "secondary"} 
+                className={`text-xs ${isActive ? "animate-pulse" : ""}`}
+              >
+                {status}
               </Badge>
             </div>
           );
