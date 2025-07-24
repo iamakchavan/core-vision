@@ -9,6 +9,7 @@ import AnalyticsDashboard from "@/components/dashboard/AnalyticsDashboard";
 import RealTimeAlerts from "@/components/dashboard/RealTimeAlerts";
 import AINetworkVisualization from "@/components/dashboard/AINetworkVisualization";
 import ShipmentsTracking from "@/components/dashboard/ShipmentsTracking";
+import AuditLog from "@/components/dashboard/AuditLog";
 import { AISimulationProvider } from "@/contexts/AISimulationContext";
 
 const Index = () => {
@@ -62,6 +63,11 @@ const Index = () => {
         {/* Shipments Tracking */}
         <div id="shipments-section" className="mb-6 lg:mb-8">
           <ShipmentsTracking />
+        </div>
+
+        {/* Audit Log */}
+        <div id="audit-section" className="mb-6 lg:mb-8">
+          <AuditLog />
         </div>
       </div>
     </div>
