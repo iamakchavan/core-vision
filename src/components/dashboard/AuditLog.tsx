@@ -177,11 +177,12 @@ const AuditLog = () => {
           </div>
           
           <div className="flex items-center gap-2">
-            <div className="flex gap-1">
+            <div className="flex gap-1 flex-wrap">
               <Button 
                 variant={filter === "all" ? "default" : "outline"} 
                 size="sm"
                 onClick={() => setFilter("all")}
+                className="text-xs"
               >
                 All
               </Button>
@@ -189,6 +190,7 @@ const AuditLog = () => {
                 variant={filter === "critical" ? "default" : "outline"} 
                 size="sm"
                 onClick={() => setFilter("critical")}
+                className="text-xs"
               >
                 Critical
               </Button>
@@ -196,6 +198,7 @@ const AuditLog = () => {
                 variant={filter === "error" ? "default" : "outline"} 
                 size="sm"
                 onClick={() => setFilter("error")}
+                className="text-xs"
               >
                 Errors
               </Button>
@@ -219,8 +222,8 @@ const AuditLog = () => {
         </div>
       </CardHeader>
       
-      <CardContent className="px-0">
-        <ScrollArea className="h-[400px] px-6">
+      <CardContent className="px-4 sm:px-6">
+        <div className="h-[400px] overflow-y-auto -mx-2 px-2">
           <div className="space-y-3">
             {filteredData.map((entry) => {
               const SeverityIcon = severityConfig[entry.severity].icon;
@@ -230,18 +233,20 @@ const AuditLog = () => {
               return (
                 <div 
                   key={entry.id}
-                  className="flex items-start gap-3 p-3 rounded-lg border bg-card hover:bg-accent/5 transition-colors"
+                  className="flex flex-col sm:flex-row sm:items-start gap-3 p-3 rounded-lg border bg-card hover:bg-accent/5 transition-colors"
                 >
-                  <div className="flex items-center gap-2 mt-0.5">
+                  <div className="flex items-center gap-2 sm:flex-col sm:gap-1 sm:mt-0.5">
                     <ActionIcon className="h-4 w-4 text-muted-foreground" />
                     <StatusIcon className={`h-4 w-4 ${statusConfig[entry.status].color}`} />
                   </div>
                   
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-2 mb-1">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="font-medium text-foreground">{entry.action}</span>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-1">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <span className="font-medium text-foreground text-sm">
+                            {entry.action}
+                          </span>
                           <Badge 
                             variant="outline" 
                             className={`text-xs ${severityConfig[entry.severity].color}`}
@@ -254,12 +259,12 @@ const AuditLog = () => {
                           <span className="font-medium">{entry.user}</span> • {entry.resource}
                         </div>
                         
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-xs text-muted-foreground break-words">
                           {entry.details}
                         </div>
                       </div>
                       
-                      <div className="text-right text-xs text-muted-foreground whitespace-nowrap">
+                      <div className="text-right text-xs text-muted-foreground whitespace-nowrap shrink-0 sm:ml-4">
                         <div>{formatTimestamp(entry.timestamp)}</div>
                         <div className="mt-1">{entry.ipAddress}</div>
                       </div>
@@ -269,9 +274,9 @@ const AuditLog = () => {
               );
             })}
           </div>
-        </ScrollArea>
+        </div>
         
-        <div className="px-6 pt-4 border-t">
+        <div className="px-2 sm:px-4 pt-4 border-t">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <span>Showing {filteredData.length} of {mockAuditData.length} entries</span>
             <span>Auto-refresh: Every 30s</span>

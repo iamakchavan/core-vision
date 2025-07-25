@@ -10,6 +10,7 @@ import RealTimeAlerts from "@/components/dashboard/RealTimeAlerts";
 import AINetworkVisualization from "@/components/dashboard/AINetworkVisualization";
 import ShipmentsTracking from "@/components/dashboard/ShipmentsTracking";
 import AuditLog from "@/components/dashboard/AuditLog";
+import IntegrationsStatus from "@/components/dashboard/IntegrationsStatus";
 import { AISimulationProvider } from "@/contexts/AISimulationContext";
 
 const Index = () => {
@@ -63,6 +64,11 @@ const Index = () => {
         {/* Shipments Tracking */}
         <div id="shipments-section" className="mb-6 lg:mb-8">
           <ShipmentsTracking />
+        </div>
+
+        {/* Integrations Status */}
+        <div id="integrations-section" className="mb-6 lg:mb-8">
+          <IntegrationsStatus />
         </div>
 
         {/* Audit Log */}

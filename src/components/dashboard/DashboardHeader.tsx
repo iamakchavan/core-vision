@@ -281,10 +281,13 @@ const DashboardHeader = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <button 
+                    className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
+                    onClick={() => window.location.href = '/settings'}
+                  >
                     <Settings className="mr-2 h-4 w-4" />
                     Settings
-                  </NavigationMenuLink>
+                  </button>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
