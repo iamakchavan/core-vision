@@ -58,59 +58,73 @@ const SettingsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
-      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col space-y-4 mb-6">
+          <div className="flex items-center justify-between">
             <Button 
               variant="outline" 
               size="sm" 
               onClick={() => navigate('/')}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 min-h-[44px]"
             >
               ← Back to Dashboard
             </Button>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">Settings</h1>
-              <p className="text-sm text-muted-foreground">
-                Configure your ZeroTouch dashboard preferences
-              </p>
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm" className="min-h-[44px]">
+                <RefreshCw className="h-4 w-4" />
+                <span className="hidden sm:inline ml-2">Reset</span>
+              </Button>
+              <Button onClick={handleSave} size="sm" className="gap-2 min-h-[44px]">
+                <Save className="h-4 w-4" />
+                <span className="ml-2">Save</span>
+              </Button>
             </div>
           </div>
-          
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm">
-              <RefreshCw className="h-4 w-4" />
-              <span className="hidden sm:inline ml-2">Reset</span>
-            </Button>
-            <Button onClick={handleSave} className="gap-2">
-              <Save className="h-4 w-4" />
-              Save Changes
-            </Button>
+          <div>
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">Settings</h1>
+            <p className="text-sm text-muted-foreground mt-1">
+              Configure your ZeroTouch dashboard preferences
+            </p>
           </div>
         </div>
 
         <Tabs defaultValue="general" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5">
-            <TabsTrigger value="general" className="text-xs sm:text-sm">
-              <Settings className="h-4 w-4 sm:mr-2" />
-              <span className="hidden sm:inline">General</span>
+          <TabsList className="grid w-full grid-cols-5 h-14 p-1 bg-muted rounded-lg">
+            <TabsTrigger 
+              value="general" 
+              className="flex flex-col items-center justify-center gap-0.5 px-1 py-2 text-xs min-h-[44px] rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm transition-all"
+            >
+              <Settings className="h-4 w-4" />
+              <span className="hidden xs:inline leading-tight">General</span>
             </TabsTrigger>
-            <TabsTrigger value="notifications" className="text-xs sm:text-sm">
-              <Bell className="h-4 w-4 sm:mr-2" />
-              <span className="hidden sm:inline">Alerts</span>
+            <TabsTrigger 
+              value="notifications" 
+              className="flex flex-col items-center justify-center gap-0.5 px-1 py-2 text-xs min-h-[44px] rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm transition-all"
+            >
+              <Bell className="h-4 w-4" />
+              <span className="hidden xs:inline leading-tight">Alerts</span>
             </TabsTrigger>
-            <TabsTrigger value="security" className="text-xs sm:text-sm">
-              <Shield className="h-4 w-4 sm:mr-2" />
-              <span className="hidden sm:inline">Security</span>
+            <TabsTrigger 
+              value="security" 
+              className="flex flex-col items-center justify-center gap-0.5 px-1 py-2 text-xs min-h-[44px] rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm transition-all"
+            >
+              <Shield className="h-4 w-4" />
+              <span className="hidden xs:inline leading-tight">Security</span>
             </TabsTrigger>
-            <TabsTrigger value="integrations" className="text-xs sm:text-sm">
-              <Globe className="h-4 w-4 sm:mr-2" />
-              <span className="hidden sm:inline">APIs</span>
+            <TabsTrigger 
+              value="integrations" 
+              className="flex flex-col items-center justify-center gap-0.5 px-1 py-2 text-xs min-h-[44px] rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm transition-all"
+            >
+              <Globe className="h-4 w-4" />
+              <span className="hidden xs:inline leading-tight">APIs</span>
             </TabsTrigger>
-            <TabsTrigger value="data" className="text-xs sm:text-sm">
-              <Database className="h-4 w-4 sm:mr-2" />
-              <span className="hidden sm:inline">Data</span>
+            <TabsTrigger 
+              value="data" 
+              className="flex flex-col items-center justify-center gap-0.5 px-1 py-2 text-xs min-h-[44px] rounded-md data-[state=active]:bg-background data-[state=active]:shadow-sm transition-all"
+            >
+              <Database className="h-4 w-4" />
+              <span className="hidden xs:inline leading-tight">Data</span>
             </TabsTrigger>
           </TabsList>
 

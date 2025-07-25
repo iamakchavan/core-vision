@@ -48,103 +48,103 @@ export const AISimulationProvider: React.FC<{ children: React.ReactNode }> = ({ 
   const simulationSteps = [
     {
       step: 1,
-      title: "AI Agents Initialization",
+      title: "Neural Network Initialization",
       agents: ["Risk Analyzer", "Port Monitor"],
-      duration: 2000,
+      duration: 3000,
       action: () => {
         toast({
-          title: "🤖 AI Agents Activated",
-          description: "Risk Analyzer and Port Monitor agents are now online",
+          title: "🧠 Neural Networks Activated",
+          description: "Deep learning models initializing across 47 nodes...",
         });
       }
     },
     {
       step: 2,
-      title: "Data Collection Phase",
-      agents: ["Risk Analyzer", "Port Monitor", "Shipment Tracker"],
-      duration: 1500,
+      title: "Real-Time Data Ingestion",
+      agents: ["Data Collector", "Stream Processor", "Port Monitor"],
+      duration: 2500,
       action: () => {
         updateSimulation({ processingData: true });
         toast({
-          title: "📊 Data Collection Started",
-          description: "Gathering real-time port and shipment data",
+          title: "⚡ High-Speed Data Ingestion",
+          description: "Processing 2.3M data points from 127 global sources",
         });
       }
     },
     {
       step: 3,
-      title: "Risk Assessment",
-      agents: ["Risk Analyzer", "Compliance Checker"],
-      duration: 2000,
+      title: "Advanced Risk Modeling",
+      agents: ["Risk Analyzer", "ML Engine", "Threat Detector"],
+      duration: 3500,
       action: () => {
         updateSimulation({ riskLevel: 'medium', alertsCount: 3 });
         toast({
-          title: "⚠️ Risk Analysis Complete",
-          description: "Medium risk detected in Southeast Asia routes",
+          title: "🎯 AI Risk Assessment",
+          description: "Quantum-enhanced algorithms detected 3 anomalies in Pacific routes",
           variant: "destructive"
         });
       }
     },
     {
       step: 4,
-      title: "Port Performance Analysis",
-      agents: ["Port Monitor", "Performance Analyzer"],
-      duration: 1800,
+      title: "Predictive Port Analytics",
+      agents: ["Port Monitor", "Performance Analyzer", "Capacity Predictor"],
+      duration: 2800,
       action: () => {
         toast({
-          title: "🏭 Port Analysis",
-          description: "Shanghai port showing 15% efficiency improvement",
+          title: "🏗️ Smart Port Analysis",
+          description: "AI predicts 23% efficiency boost at Shanghai terminal",
         });
       }
     },
     {
       step: 5,
-      title: "Shipment Optimization",
-      agents: ["Route Optimizer", "Shipment Tracker"],
-      duration: 2200,
+      title: "Dynamic Route Optimization",
+      agents: ["Route Optimizer", "Weather AI", "Traffic Analyzer"],
+      duration: 4000,
       action: () => {
-        updateSimulation({ shipmentsProcessed: 247 });
+        updateSimulation({ shipmentsProcessed: 1247 });
         toast({
-          title: "🚢 Route Optimization",
-          description: "247 shipments optimized, saving 12% transit time",
+          title: "🚀 Quantum Route Optimization",
+          description: "1,247 shipments optimized using genetic algorithms - 31% time saved",
         });
       }
     },
     {
       step: 6,
-      title: "Predictive Analytics",
-      agents: ["Demand Forecaster", "Weather Analyzer"],
-      duration: 1600,
+      title: "Multi-Modal Predictive Intelligence",
+      agents: ["Demand Forecaster", "Weather AI", "Market Predictor", "Sentiment Analyzer"],
+      duration: 3200,
       action: () => {
         toast({
-          title: "🔮 Predictive Analysis",
-          description: "Weather delays predicted for Pacific routes",
+          title: "🔮 Future-State Prediction",
+          description: "AI forecasts 94.7% accuracy on 30-day supply chain events",
         });
       }
     },
     {
       step: 7,
-      title: "Compliance Verification",
-      agents: ["Compliance Checker", "Document Processor"],
-      duration: 1400,
+      title: "Autonomous Compliance Engine",
+      agents: ["Compliance AI", "Document Processor", "Regulatory Scanner"],
+      duration: 2600,
       action: () => {
         updateSimulation({ alertsCount: 1 });
         toast({
-          title: "✅ Compliance Check",
-          description: "All shipments verified, 1 minor documentation issue found",
+          title: "⚖️ Smart Compliance Verification",
+          description: "AI processed 15,000 documents - 99.8% compliance achieved",
         });
       }
     },
     {
       step: 8,
-      title: "Report Generation",
-      agents: ["Report Generator"],
-      duration: 1000,
+      title: "Intelligent Report Synthesis",
+      agents: ["Report Generator", "Insight Engine", "Visualization AI"],
+      duration: 2000,
       action: () => {
         updateSimulation({ processingData: false, riskLevel: 'low' });
         toast({
-          title: "📈 Analysis Complete",
-          description: "Comprehensive supply chain report generated",
+          title: "📊 AI-Generated Intelligence Report",
+          description: "Executive dashboard updated with 47 actionable insights",
         });
       }
     }

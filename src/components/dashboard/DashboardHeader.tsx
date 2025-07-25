@@ -19,8 +19,8 @@ import { useState } from "react";
 const DashboardHeader = () => {
   const { simulation, startSimulation, stopSimulation } = useAISimulation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
-  
+
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -44,6 +44,7 @@ const DashboardHeader = () => {
     { label: "Alerts", icon: AlertTriangle, action: () => scrollToSection('alerts-section') },
     { label: "AI Agents", icon: Shield, action: () => scrollToSection('ai-agents') },
     { label: "AI Network", icon: Activity, action: () => scrollToSection('ai-network') },
+    { label: "Settings", icon: Settings, action: () => { window.location.href = '/settings'; setMobileMenuOpen(false); } },
   ];
 
   return (
@@ -63,7 +64,7 @@ const DashboardHeader = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -81,9 +82,9 @@ const DashboardHeader = () => {
                 </SheetHeader>
                 <div className="mt-6 space-y-2">
                   {/* AI Demo Button */}
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     className={cn(
                       "w-full gap-2 justify-start transition-all duration-300",
                       simulation.isActive && "bg-primary/10 border-primary text-primary"
@@ -96,7 +97,7 @@ const DashboardHeader = () => {
                     <BarChart3 className="h-4 w-4" />
                     {simulation.isActive ? `AI Demo (${simulation.currentStep}/${simulation.totalSteps})` : "AI Demo"}
                   </Button>
-                  
+
                   {/* Navigation Items */}
                   {navItems.map((item) => (
                     <Button
@@ -137,15 +138,12 @@ const DashboardHeader = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-card">
-                <span className="text-sm font-medium text-foreground">Dark Mode:</span>
-                <ThemeToggle />
-              </div>
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <ThemeToggle />
+              <Button
+                variant="outline"
+                size="sm"
                 className={cn(
                   "gap-2 transition-all duration-300",
                   simulation.isActive && "bg-primary/10 border-primary text-primary animate-pulse"
@@ -182,7 +180,7 @@ const DashboardHeader = () => {
                     Dashboard
                   </button>
                 </NavigationMenuItem>
-                
+
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>
                     <TrendingUp className="mr-2 h-4 w-4" />
@@ -191,21 +189,21 @@ const DashboardHeader = () => {
                   <NavigationMenuContent>
                     <div className="grid gap-3 p-6 w-[400px]">
                       <div className="grid grid-cols-2 gap-4">
-                        <button 
-                          className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer w-full text-left"
+                        <button
+                          className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer w-full text-left transition-all duration-200 hover:scale-[1.02]"
                           onClick={(e) => handleNavClick(e, 'analytics-section')}
                         >
-                          <BarChart3 className="h-4 w-4" />
+                          <BarChart3 className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                           <div>
                             <div className="text-sm font-medium">Risk Analytics</div>
                             <div className="text-xs text-muted-foreground">Risk heatmaps & trends</div>
                           </div>
                         </button>
-                        <button 
-                          className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer w-full text-left"
+                        <button
+                          className="flex items-center gap-2 p-3 rounded-md hover:bg-accent cursor-pointer w-full text-left transition-all duration-200 hover:scale-[1.02]"
                           onClick={(e) => handleNavClick(e, 'port-status')}
                         >
-                          <Globe className="h-4 w-4" />
+                          <Globe className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                           <div>
                             <div className="text-sm font-medium">Port Performance</div>
                             <div className="text-xs text-muted-foreground">Global port metrics</div>
@@ -217,7 +215,7 @@ const DashboardHeader = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <button 
+                  <button
                     className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
                     onClick={(e) => handleNavClick(e, 'shipments-section')}
                   >
@@ -227,7 +225,7 @@ const DashboardHeader = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <button 
+                  <button
                     className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
                     onClick={(e) => handleNavClick(e, 'alerts-section')}
                   >
@@ -244,7 +242,7 @@ const DashboardHeader = () => {
                   <NavigationMenuContent>
                     <div className="grid gap-3 p-6 w-[500px]">
                       <div className="grid grid-cols-1 gap-3">
-                        <NavigationMenuLink 
+                        <NavigationMenuLink
                           className="flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer"
                           onClick={() => scrollToSection('ai-network')}
                         >
@@ -256,7 +254,7 @@ const DashboardHeader = () => {
                             <div className="text-xs text-muted-foreground">View AI agent workflows and connections</div>
                           </div>
                         </NavigationMenuLink>
-                        <NavigationMenuLink 
+                        <NavigationMenuLink
                           className="flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer"
                           onClick={() => scrollToSection('ai-agents')}
                         >
@@ -281,7 +279,7 @@ const DashboardHeader = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <button 
+                  <button
                     className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
                     onClick={() => window.location.href = '/settings'}
                   >
