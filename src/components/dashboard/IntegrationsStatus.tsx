@@ -148,22 +148,22 @@ const IntegrationsStatus = () => {
 
   return (
     <Card className="card-maritime">
-      <CardHeader className="pb-4">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Globe className="h-5 w-5 text-primary" />
-            <CardTitle className="text-lg font-semibold">Integrations Status</CardTitle>
-            <Badge variant="outline" className="text-xs">
+      <CardHeader className="pb-3 px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex items-center gap-2 flex-wrap">
+            <Globe className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+            <CardTitle className="text-base sm:text-lg font-semibold">Integrations Status</CardTitle>
+            <Badge variant="outline" className="text-xs px-1.5 py-0.5">
               {connectedCount}/{totalCount} Active
             </Badge>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="outline" size="sm">
-                  <RefreshCw className="h-4 w-4" />
-                  <span className="hidden sm:inline ml-2">Refresh</span>
+                <Button variant="outline" size="sm" className="h-8 px-2">
+                  <RefreshCw className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline ml-2 text-xs">Refresh</span>
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -171,20 +171,20 @@ const IntegrationsStatus = () => {
               </TooltipContent>
             </Tooltip>
             
-            <Button variant="outline" size="sm">
-              <Settings className="h-4 w-4" />
-              <span className="hidden sm:inline ml-2">Configure</span>
+            <Button variant="outline" size="sm" className="h-8 px-2">
+              <Settings className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline ml-2 text-xs">Configure</span>
             </Button>
           </div>
         </div>
         
-        <div className="text-sm text-muted-foreground">
+        <div className="text-xs sm:text-sm text-muted-foreground">
           Last updated: {new Date().toLocaleString()}
         </div>
       </CardHeader>
       
-      <CardContent className="space-y-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <CardContent className="space-y-3 px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
           {mockIntegrationData.map((integration) => {
             const StatusIcon = statusConfig[integration.status].icon;
             const IntegrationIcon = integration.icon;
@@ -192,52 +192,52 @@ const IntegrationsStatus = () => {
             return (
               <div 
                 key={integration.id}
-                className="p-4 rounded-lg border bg-card hover:bg-accent/5 transition-colors"
+                className="p-3 sm:p-4 rounded-lg border bg-card hover:bg-accent/5 transition-colors"
               >
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-3 min-w-0 flex-1">
-                    <div className="p-2 rounded-md bg-muted/50">
-                      <IntegrationIcon className="h-4 w-4 text-muted-foreground" />
+                <div className="flex items-start justify-between gap-2 mb-2 sm:mb-3">
+                  <div className="flex items-start gap-2 sm:gap-3 min-w-0 flex-1">
+                    <div className="p-1.5 sm:p-2 rounded-md bg-muted/50 shrink-0">
+                      <IntegrationIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-medium text-foreground text-sm truncate">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-1">
+                        <h3 className="font-medium text-foreground text-xs sm:text-sm truncate">
                           {integration.name}
                         </h3>
                         {integration.version && (
-                          <Badge variant="outline" className="text-xs">
+                          <Badge variant="outline" className="text-xs px-1 py-0 w-fit">
                             {integration.version}
                           </Badge>
                         )}
                       </div>
-                      <p className="text-xs text-muted-foreground line-clamp-2">
+                      <p className="text-xs text-muted-foreground line-clamp-2 leading-tight">
                         {integration.description}
                       </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-1">
-                    <StatusIcon className={`h-4 w-4 ${statusConfig[integration.status].textColor}`} />
-                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
-                      <ExternalLink className="h-3 w-3" />
+                  <div className="flex items-center gap-1 shrink-0">
+                    <StatusIcon className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${statusConfig[integration.status].textColor}`} />
+                    <Button variant="ghost" size="sm" className="h-5 w-5 sm:h-6 sm:w-6 p-0">
+                      <ExternalLink className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                     </Button>
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                     <Badge 
                       variant="outline" 
-                      className={`text-xs ${statusConfig[integration.status].color}`}
+                      className={`text-xs px-1.5 py-0.5 w-fit ${statusConfig[integration.status].color}`}
                     >
                       {statusConfig[integration.status].label}
                     </Badge>
-                    <span className="text-muted-foreground">
+                    <span className="text-muted-foreground text-xs">
                       {integration.endpoints} endpoints
                     </span>
                   </div>
                   
-                  <div className="text-right text-muted-foreground">
+                  <div className="flex sm:flex-col sm:text-right text-muted-foreground gap-2 sm:gap-0 text-xs">
                     <div>{formatResponseTime(integration.responseTime)}</div>
                     <div>{formatLastChecked(integration.lastChecked)}</div>
                   </div>
@@ -248,26 +248,26 @@ const IntegrationsStatus = () => {
         </div>
         
         {/* Summary Stats */}
-        <div className="pt-4 border-t">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div className="pt-3 sm:pt-4 border-t">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
             <div>
-              <div className="text-lg font-semibold text-success">{connectedCount}</div>
+              <div className="text-base sm:text-lg font-semibold text-success">{connectedCount}</div>
               <div className="text-xs text-muted-foreground">Connected</div>
             </div>
             <div>
-              <div className="text-lg font-semibold text-warning">
+              <div className="text-base sm:text-lg font-semibold text-warning">
                 {mockIntegrationData.filter(i => i.status === 'warning').length}
               </div>
               <div className="text-xs text-muted-foreground">Warnings</div>
             </div>
             <div>
-              <div className="text-lg font-semibold text-destructive">
+              <div className="text-base sm:text-lg font-semibold text-destructive">
                 {mockIntegrationData.filter(i => i.status === 'error').length}
               </div>
               <div className="text-xs text-muted-foreground">Errors</div>
             </div>
             <div>
-              <div className="text-lg font-semibold text-foreground">
+              <div className="text-base sm:text-lg font-semibold text-foreground">
                 {mockIntegrationData.reduce((sum, i) => sum + i.endpoints, 0)}
               </div>
               <div className="text-xs text-muted-foreground">Total Endpoints</div>
