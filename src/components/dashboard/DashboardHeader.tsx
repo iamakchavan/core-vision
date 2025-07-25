@@ -44,6 +44,7 @@ const DashboardHeader = () => {
     { label: "Alerts", icon: AlertTriangle, action: () => scrollToSection('alerts-section') },
     { label: "AI Agents", icon: Shield, action: () => scrollToSection('ai-agents') },
     { label: "AI Network", icon: Activity, action: () => scrollToSection('ai-network') },
+    { label: "Users", icon: Users, action: () => { window.location.href = '/users'; setMobileMenuOpen(false); } },
     { label: "Settings", icon: Settings, action: () => { window.location.href = '/settings'; setMobileMenuOpen(false); } },
   ];
 
@@ -272,10 +273,13 @@ const DashboardHeader = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <button
+                    className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
+                    onClick={() => window.location.href = '/users'}
+                  >
                     <Users className="mr-2 h-4 w-4" />
                     Users
-                  </NavigationMenuLink>
+                  </button>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
